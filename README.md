@@ -12,12 +12,14 @@
 + 自定义部分样式。
 + 支持后端发布内容到自己的 Docusaurus 站点。后端部署地址 [点击跳转]
 
+
+
 ## 如何安装
 
 如果使用的是 npm， 首先克隆本站点的源码，然后进入到克隆下来的文件夹下，进行依赖包的安装：
 
 ```bash
-git clone https://github									 # 01 使用 git 将本仓库的源码克隆下来。
+git clone git@github.com:zhoujun134/zj-docusaurus-blogs.git		 # 01 使用 git 将本仓库的源码克隆下来。
 cd zj-docusaurus-blogs                     # 02 进入到克隆下来的文件夹下
 npm install 															 # 03 安装依赖包
 ```
