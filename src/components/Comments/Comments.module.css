@@ -1,0 +1,114 @@
+/* src/components/Comments/Comments.module.css */
+.commentsContainer {
+    margin: 20px 0;
+}
+
+.commentsContainer li {
+    list-style-type: none;
+}
+
+.commentItem {
+    padding: 10px;
+    margin-bottom: 8px;
+}
+.commentItemContent {
+    margin-left: 10px;
+    margin-bottom: 8px;
+    max-width: 80%; /* 或者根据需要设置一个合适的值 */
+    word-break: break-word; /* 允许长单词在边界处断行 */
+}
+/* 限制评论内容的宽度，防止过长导致布局问题 */
+.commentItemContent p {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+.commentTitle {
+    margin-bottom: 10px;
+}
+
+.commentForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.commentInput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;     /* 输入框圆角 */
+}
+
+.inputGroup {
+    display: flex;          /* 使用 Flexbox 布局 */
+    flex-direction: row;
+    justify-content: space-between; /* 左右排列，中间留间隔 */
+    margin-bottom: 10px;    /* 容器下方留白 */
+}
+
+.commentItemUp {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* 在交叉轴的开始位置对齐 */
+    /*justify-content: space-between; !* 两端对齐 *!*/
+    /*margin-left: 50px;*/
+}
+.commentItemDown {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* 在交叉轴的开始位置对齐 */
+    /*justify-content: space-between; !* 两端对齐 *!*/
+    margin-left: 60px;
+}
+
+.commentCreateTime {
+    /* 创建时间样式，根据需要添加 */
+    margin-right: 10px; /* 与回复按钮保持间隔 */
+    align-items: center; /* 垂直居中对齐 */
+
+}
+
+.replyButton {
+    /* 回复按钮样式 */
+    margin-left: auto; /* 推到行尾 */
+}
+
+.inputFieldLeft {
+    flex: 1;                /* 每个输入框占据一半空间 */
+    padding: 8px;           /* 输入框内边距 */
+    box-sizing: border-box; /* 边框计算在宽度内 */
+    border: 1px solid #ddd;/* 输入框边框 */
+    border-radius: 4px;     /* 输入框圆角 */
+}
+
+.inputFieldRight {
+    flex: 1;                /* 每个输入框占据一半空间 */
+    padding: 8px;           /* 输入框内边距 */
+    box-sizing: border-box; /* 边框计算在宽度内 */
+    border: 1px solid #ddd;/* 输入框边框 */
+    border-radius: 4px;     /* 输入框圆角 */
+    margin-left: 10px;
+}
+.commentButton {
+    padding: 8px 16px;
+    background-color: var(--ifm-color-primary-darker2);;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.commentButton:hover {
+    background-color: var(--ifm-color-primary-darker);;
+}
+
+.noComments {
+    text-align: center;
+    color: #666;
+    margin: 20px 0;
+}
+
+.commentListContainer {
+    margin-top: 20px;
+}

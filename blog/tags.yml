@@ -1,0 +1,54 @@
+facebook:
+  label: Facebook
+  permalink: /facebook
+  description: Facebook tag description
+hello:
+  label: Hello
+  permalink: /hello
+  description: Hello tag description
+
+docusaurus:
+  label: Docusaurus
+  permalink: /docusaurus
+  description: Docusaurus tag description
+
+Docusaurus:
+  label: Docusaurus
+  permalink: /Docusaurus
+  description: Docusaurus tag description
+hola:
+  label: Hola
+  permalink: /hola
+  description: Hola tag description
+comments:
+  label: Comment
+  permalink: /comment
+  description: Comment tag description
+
+随笔:
+  label: 随笔
+  permalink: /sui-bi
+  description: 这里主要记录一些随笔记录
+
+杂谈:
+  label: 杂谈
+  permalink: /za-tan
+  description: 这里主要记录一些随笔记录
+
+博客:
+  label: 博客
+  permalink: /blog-build
+  description: 这里主要记录一些随笔记录
+
+博客构建:
+  label: 博客构建
+  permalink: /blog-building
+  description: 这里主要记录一些随笔记录
+后端:
+  label: 后端
+  permalink: /hou-duan
+  description: 这里主要记录一些随笔记录
+java:
+  label: java
+  permalink: /java
+  description: 这里主要记录一些随笔记录
