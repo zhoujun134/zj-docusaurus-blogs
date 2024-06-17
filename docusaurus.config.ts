@@ -43,12 +43,40 @@ const config: Config = {
                 theme: {
                     customCss: './src/css/custom.css',
                 },
+                gtag: {
+                    trackingID: 'G-S4SD5NXWXF',
+                    anonymizeIP: true,
+                },
+                googleAnalytics: {
+                    trackingID: 'UA-141789564-1',
+                    anonymizeIP: true,
+                },
             } satisfies Preset.Options,
         ],
     ],
     plugins: [
         'docusaurus-plugin-image-zoom', // can also just be 'image-zoom'
         '@docusaurus/plugin-ideal-image',
+        [
+            'docusaurus-plugin-baidu-tongji',
+            { token: '3fe9ea74bd372ee22bcbf0caaf670701' },
+        ],
+        [
+            '@docusaurus/plugin-pwa',
+            {
+                debug: process.env.NODE_ENV === 'development',
+                offlineModeActivationStrategies: [
+                    'appInstalled',
+                    'standalone',
+                    'queryString',
+                ],
+                pwaHead: [
+                    { tagName: 'link', rel: 'icon', href: '/img/logo.png' },
+                    { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
+                    { tagName: 'meta', name: 'theme-color', content: '#12affa' },
+                ],
+            },
+        ],
         [
             './src/plugins/plugin-content-blog', // 为了实现全局 blog 数据，必须改写 plugin-content-blog 插件
             {
