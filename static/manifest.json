@@ -1,0 +1,27 @@
+{
+  "name": "Z 不殊",
+  "short_name": "Z 不殊",
+  "theme_color": "#12affa",
+  "background_color": "#424242",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./index.html",
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://zbus.top/manifest.json"
+    }
+  ],
+  "icons": [
+    {
+      "src": "img/logo.jpg",
+      "sizes": "128x128",
+      "type": "image/jpg"
+    },
+    {
+      "src": "img/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    }
+  ]
+}
