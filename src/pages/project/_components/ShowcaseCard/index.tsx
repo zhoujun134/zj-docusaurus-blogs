@@ -51,7 +51,7 @@ const ShowcaseCard = memo(({ project }: { project: Project }) => {
           <h4 className={styles.showcaseCardTitle}>
             <Link href={project.website}>{project.title}</Link>
           </h4>
-          {project.tags.includes('favorite') && <FavoriteIcon svgClass={styles.svgIconFavorite} size="small" />}
+          {project.tags.includes('favorite') && <FavoriteIcon svgClass={cn(styles.svgIconFavorite, styles.svgIcon)} size="small" />}
           {project.source && (
             <Link
               href={project.source}
