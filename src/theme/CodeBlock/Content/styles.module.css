@@ -44,7 +44,7 @@
 
 /*当代码折叠时，不显示代码块*/
 .codeBlockDisplayNone {
-    display: none;
+    display: none !important;
 }
 
 /*当代码折叠时，按钮靠右显示*/

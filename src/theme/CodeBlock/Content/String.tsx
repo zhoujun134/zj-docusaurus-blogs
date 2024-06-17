@@ -90,7 +90,7 @@ export default function CodeBlockString({
           <Highlight
               theme={prismTheme}
               code={code}
-              language={(language ?? 'text') as Language}>
+              language={(language ?? 'javascript') as Language}>
             {({className, style, tokens, getLineProps, getTokenProps}) => (
                 <pre
                     /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
