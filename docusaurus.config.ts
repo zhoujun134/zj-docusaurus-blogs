@@ -158,13 +158,10 @@ const config: Config = {
         },
         // 搜索按钮相关
         algolia: {
-            appId: 'R2IYF7ETH7',
-            apiKey: '599cec31baffa4868cae4e79f180729b',
-            indexName: 'docsearch',
+            appId: 'KNKL89273C',
+            apiKey: '628bcad21219abb3c3078604745ac41a',
+            indexName: 'zbus.top',
             contextualSearch: true,
-            searchParameters: {
-                facetFilters: ['language:en', ['filter1', 'filter2'], 'filter3'],
-            },
         },
         // Replace with your project's social card
         image: 'img/docusaurus-social-card.jpg',

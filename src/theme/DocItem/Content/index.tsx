@@ -5,7 +5,6 @@ import type {WrapperProps} from '@docusaurus/types';
 import Comments from "@site/src/components/Comments";
 import {useLocation} from "@docusaurus/router";
 
-
 type Props = WrapperProps<typeof ContentType>;
 
 export default function ContentWrapper(props: Props): JSX.Element {

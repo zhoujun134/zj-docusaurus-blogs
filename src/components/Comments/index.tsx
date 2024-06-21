@@ -8,7 +8,8 @@ import {getCommentListByArticleId, submitComment} from "@site/src/utils/articleA
 
 interface CommentsProps {
     // 如果有特定的 props 可以在这里定义
-    articleId: string
+    articleId: string,
+    articleTitle?: string,
 }
 
 const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
@@ -79,6 +80,7 @@ const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
 
         const submitRequest: ICommentSubmitRequest = {
             articleId: props.articleId,
+            articleTitle: props.articleTitle,
             author: userName,
             email: userEmail,
             content: newComment,

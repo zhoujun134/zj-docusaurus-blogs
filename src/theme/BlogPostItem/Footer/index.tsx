@@ -1,110 +1,119 @@
-import { useBlogPost, useDateTimeFormat } from '@docusaurus/theme-common/internal'
-import { Icon } from '@iconify/react'
-import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink'
+import CodeBlock from '@theme/CodeBlock'
+import Layout from '@theme/Layout'
+import React, {useEffect, useState} from 'react'
 
+import {motion} from 'framer-motion'
 import styles from './styles.module.css'
-import {cn} from "@site/src/utils/cnUtils";
-import React from "react";
-import Tag from "@theme/Tag";
-import {ReadingTime} from "@site/src/theme/BlogPostItem/Header/Info";
+import FriendCard from "@site/src/pages/friends/_components/FriendCard";
+import Comments from "@site/src/components/Comments";
+import {Friend, IFriendInfo, IResult} from "@site/src/utils/interface/zjType";
+import service from "@site/src/utils/service";
 
-export default function BlogPostItemFooter(): JSX.Element | null {
-  const { metadata, isBlogPostPage } = useBlogPost()
-  const { tags, title, editUrl, hasTruncateMarker, date, readingTime, authors } = metadata
+const TITLE = '友链'
+const DESCRIPTION = '有很多良友，胜于有很多财富。'
+const ADD_FRIEND_URL = '#submitCommentForm'
 
-  const dateTimeFormat = useDateTimeFormat({
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  })
+const SITE_INFO = `title: 'Z 不殊'
+description: '道阻且长，行则将至'
+website: 'https://zbus.top'
+avatar: 'https://img.zbus.top/zbus/logo.jpg'
+`
 
-  const formatDate = (blogDate: string) => dateTimeFormat.format(new Date(blogDate))
-
-  // A post is truncated if it's in the "list view" and it has a truncate marker
-  const truncatedPost = !isBlogPostPage && hasTruncateMarker
-
-  const tagsExists = tags.length > 0
-  const authorsExists = authors.length > 0
-
-  const renderFooter = isBlogPostPage
-
-  if (!renderFooter) {
-    return (
-      <div style={{ position: 'relative', zIndex: 2 }}>
-        <div className={styles.blogPostInfo}>
-          {/* {authorsExists && (
-            <>
-              <Icon icon="ri:user-line"  />
-              {authors.map(a => (
-                <span key={a.url} className="blog__author">
-                  <a href={a.url} className={styles.blogPostAuthor}>
-                    {a.name}
-                  </a>
-                </span>
-              ))}
-            </>
-          )} */}
-          {date && (
-            <>
-              <Icon icon="ri:calendar-line" />
-              <time dateTime={date} itemProp="datePublished">
-                {formatDate(date)}
-              </time>
-            </>
-          )}
-          {tagsExists && (
-            <>
-              <Icon icon="ri:price-tag-3-line" />
-              <span className={styles.blogPostInfoTags}>
-                {tags.map(({ label, permalink: tagPermalink, description }) => (
-                  <Tag label={label} permalink={tagPermalink} description={description} key={tagPermalink} />
-                ))}
-              </span>
-            </>
-          )}
-          {readingTime && (
-            <>
-              <Icon icon="ri:time-line" />
-              <span className={cn(styles.blogPostReadTime, 'blog__readingTime')}>
-                <ReadingTime readingTime={readingTime} />
-              </span>
-            </>
-          )}
-          {truncatedPost && (
-            <div
-              className={cn(
-                'flex flex-1 items-center justify-end gap-0.5 font-medium text-[var(--ifm-link-color)] opacity-0 transition-opacity duration-200 group-hover/blog:opacity-100',
-                {
-                  'col--3': tagsExists,
-                },
-              )}
-            >
-              <ReadMoreLink blogPostTitle={title} to={metadata.permalink} className="hover:no-underline" />
-            </div>
-          )}
-        </div>
+function SiteInfo() {
+  return (
+      <div className="w-96 rounded-[var(--ifm-pre-border-radius)] border border-black border-solid border-opacity-10 text-left text-sm leading-none">
+        <CodeBlock language="yaml" title="本站信息" className={styles.codeBlock}>
+          {SITE_INFO}
+        </CodeBlock>
       </div>
-    )
+  )
+}
+
+function FriendHeader() {
+  return (
+      <section className="margin-top--lg margin-bottom--lg text-center">
+        <h1>{TITLE}</h1>
+        <p>{DESCRIPTION}</p>
+        <a className="button button--primary" href={ADD_FRIEND_URL} rel="noreferrer">
+          🔗 申请友链
+        </a>
+      </section>
+  )
+}
+
+export async function getFriendsFromService() {
+  try {
+    const resp = await service({
+      url: '/api/friends',
+      method: 'get'
+    });
+    return JSON.parse(JSON.stringify(resp)) as IResult<Map<string, IFriendInfo[]>>;
+  } catch (error) {
+    let {message} = error;
+    window.alert("系统开小差了！请稍后重试！" + message);
+    return {
+      code: 500,
+      message: "系统开小差了！请稍后重试！" + message,
+      data: {} as Map<string, IFriendInfo[]>
+    };
   }
+}
+
+function FriendCards() {
+  const [friends, setFriends] = useState<Friend[]>([]);
+  const fetchFriendsFromServer = async () => {
+    getFriendsFromService().then((result: IResult<Map<string, IFriendInfo[]>>) => {
+      if (!result && result.code != "0") {
+        return;
+      }
+      const friendGroup: Map<string, IFriendInfo[]> = new Map(Object.entries(result.data));
+      const friendList: Friend[] = [];
+      friendGroup.forEach((friends, key) => {
+        friends.forEach((friend: IFriendInfo) => {
+          const oneFriend = {
+            title: friend.title,
+            description: friend.description,
+            website: friend.siteUrl,
+            avatar: friend.logoUrl
+          }
+          friendList.push(oneFriend)
+        })
+      })
+      setFriends(friendList)
+    })
+  };
+
+  // 组件挂载完成后获取评论列表
+  useEffect(() => {
+    fetchFriendsFromServer().then(r => {
+    });
+  }, []); // 空依赖数组表示这个 effect 只会在组件挂载时运行一次
+  return (
+      <section className="margin-top--lg margin-bottom--lg">
+        <div className={styles.friendContainer}>
+          <ul className={styles.friendList}>
+            {friends.map(friend => (
+                <FriendCard key={friend.avatar} friend={friend} />
+            ))}
+          </ul>
+          <Comments articleId={'@site/my-friends/links/apply'}/>
+        </div>
+      </section>
+  )
+}
+
+export default function FriendLink(): JSX.Element {
+  const ref = React.useRef<HTMLDivElement>(null)
 
   return (
-    <footer className={cn('row docusaurus-mt-lg', isBlogPostPage && styles.blogPostFooterDetailsFull)}>
-      {/* {isBlogPostPage && editUrl && (
-        <div className="col margin-top--sm">
-          <EditThisPage editUrl={editUrl} />
-        </div>
-      )} */}
-
-      {truncatedPost && (
-        <div
-          className={cn('col text--right', {
-            'col--3': tagsExists,
-          })}
-        >
-          <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
-        </div>
-      )}
-    </footer>
+      <Layout title={TITLE} description={DESCRIPTION}>
+        <motion.main ref={ref} className="margin-vert--md">
+          <FriendHeader />
+          <FriendCards />
+          <motion.div drag dragConstraints={ref} className={styles.dragBox}>
+            <SiteInfo />
+          </motion.div>
+        </motion.main>
+      </Layout>
   )
 }
