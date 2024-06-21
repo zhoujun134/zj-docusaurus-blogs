@@ -4,7 +4,7 @@ export const projects: Project[] = [
         description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
         preview: '/logo.png',
         website: 'https://zbus.top',
-        source: 'https://github.com/zhoujun134/blog',
+        source: 'https://github.com/zhoujun134/zj-docusaurus-blogs',
         tags: ['opensource', 'design', 'favorite'],
         type: 'web',
     },
