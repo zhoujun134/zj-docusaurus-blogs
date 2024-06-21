@@ -1,10 +1,10 @@
 export const projects: Project[] = [
     {
-        title: '愧怍的小站',
+        title: 'Z 不殊的小站',
         description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
-        preview: '/anonymous.png',
-        website: 'https://kuizuo.cn',
-        source: 'https://github.com/kuizuo/blog',
+        preview: '/logo.png',
+        website: 'https://zbus.top',
+        source: 'https://github.com/zhoujun134/blog',
         tags: ['opensource', 'design', 'favorite'],
         type: 'web',
     },
