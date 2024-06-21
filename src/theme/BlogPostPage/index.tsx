@@ -21,7 +21,6 @@ function BlogPostPageContent({
     children: ReactNode
 }): JSX.Element {
     const {pathname} = useLocation();
-    console.log("blog path: ",  pathname)
     const {metadata, toc} = useBlogPost()
     const {nextItem, prevItem, frontMatter} = metadata
     const {
