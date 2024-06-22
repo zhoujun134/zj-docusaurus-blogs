@@ -1,7 +1,6 @@
 // src/components/Comments/Comments.tsx
 import React, {useEffect, useState} from 'react';
 import styles from './Comments.module.css';
-import Admonition from '@theme/Admonition';
 import {ICommentInfo, ICommentSubmitRequest, VNoticeCardProps} from "@site/src/utils/interface/zjType";
 import {getCommentListByArticleId, submitComment} from "@site/src/utils/articleApi";
 import NoticeCard from "@site/src/components/NoticeCard"; // 引入 CSS 模块
@@ -189,6 +188,7 @@ const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
                         onChange={(e) => setNewComment(e.target.value)}
                         placeholder="写下你的评论..."
                         className={styles.commentInput}
+                        rows={5}
                         required
                     />
                 </div>

@@ -48,6 +48,11 @@
     margin-bottom: 10px;    /* 容器下方留白 */
 }
 
+.inputGroup textarea {
+    resize: vertical; /* 允许垂直方向上的调整大小 */
+    max-height: 300px; /* 设置最大高度 */
+}
+
 .commentItemUp {
     display: flex;
     flex-direction: row;
