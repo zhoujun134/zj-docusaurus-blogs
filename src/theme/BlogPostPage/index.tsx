@@ -8,10 +8,15 @@ import type {Props} from '@theme/BlogPostPage'
 import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata'
 import BlogPostPaginator from '@theme/BlogPostPaginator'
 import TOC from '@theme/TOC'
-import {type ReactNode} from 'react'
+import React, {type ReactNode} from 'react'
 import {cn} from "@site/src/utils/cnUtils";
 import Comments from "@site/src/components/Comments";
 import {useLocation} from "@docusaurus/router";
+import {VNoticeCardProps} from "@site/src/utils/interface/zjType";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Admonition from "@theme/Admonition";
+import Link from "@docusaurus/Link";
+import NoticeCard from "@site/src/components/NoticeCard";
 
 function BlogPostPageContent({
                                  sidebar,
@@ -30,6 +35,7 @@ function BlogPostPageContent({
         hide_comment: hideComment,
     } = frontMatter
 
+    const noticeCard: VNoticeCardProps = copyrightVNoticeCardProps();
     return (
         <BlogLayout
             sidebar={sidebar}
@@ -46,10 +52,30 @@ function BlogPostPageContent({
                     <BlogPostPaginator nextItem={nextItem} prevItem={prevItem}/>
                 </div>
             )}
+            <NoticeCard {...noticeCard}/>
             <Comments articleId={pathname} articleTitle={metadata.title}/>
             <BackToTopButton/>
         </BlogLayout>
     )
+}
+
+function copyrightVNoticeCardProps(): VNoticeCardProps {
+    const {siteConfig} = useDocusaurusContext();
+    const {pathname} = useLocation();
+    const curDocsPath = siteConfig.url + pathname;
+    return {
+        title: "本文声明",
+        href: curDocsPath,
+        type: 'danger',
+        icon: '💡',
+        description: <>
+            <p>转载请注明出处，谢谢合作！转载本文请声明原文章链接如下:</p>
+            <p><strong>原文链接: </strong><a href={curDocsPath}>{curDocsPath}</a></p>
+            <p><strong>作者: </strong><a href={siteConfig.url}>{siteConfig.title}</a></p>
+            <p><Link href={siteConfig.url}>{siteConfig.title}</Link> 致力于分享有价值的信息和知识。我们尊重并保护知识产权。本文仅代表作者观点，不代表任何立场。
+                如果本文有所侵权，请联系作者删除或修改！</p>
+        </>
+    }
 }
 
 export default function BlogPostPage(props: Props): JSX.Element {

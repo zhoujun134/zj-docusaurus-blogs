@@ -35,6 +35,14 @@ export type Friend = {
     website: string
     avatar?: string
 }
+
+export interface VNoticeCardProps {
+    title: string,
+    description: JSX.Element | string,
+    type: 'tip' | 'danger' | 'note' | 'warning' | 'info',
+    icon?: string,
+    href?: string,
+}
 // 响应体 ========================= end =======================================
 
 // 请求体 ======================== start =======================================

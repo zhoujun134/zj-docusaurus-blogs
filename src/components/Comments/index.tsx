@@ -2,8 +2,9 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Comments.module.css';
 import Admonition from '@theme/Admonition';
-import {ICommentInfo, ICommentSubmitRequest} from "@site/src/utils/interface/zjType";
-import {getCommentListByArticleId, submitComment} from "@site/src/utils/articleApi"; // 引入 CSS 模块
+import {ICommentInfo, ICommentSubmitRequest, VNoticeCardProps} from "@site/src/utils/interface/zjType";
+import {getCommentListByArticleId, submitComment} from "@site/src/utils/articleApi";
+import NoticeCard from "@site/src/components/NoticeCard"; // 引入 CSS 模块
 // 引入 Docusaurus 的 DocPageContext
 
 interface CommentsProps {
@@ -199,6 +200,15 @@ const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
         </div>
     )
 
+    const noticeCard: VNoticeCardProps = {
+        title: "关于您提交的评论",
+        type: "info",
+        icon: '🕹',
+        description:
+            <>
+                <p>您提交的评论，作者将会收到通知，在审核之后，将会展示在评论列表中。</p>
+            </>,
+    }
     return (
         <div className={styles.commentsContainer}>
             <h2># 评论列表</h2>
@@ -217,9 +227,7 @@ const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
                     <p className={styles.noComments}>当前暂无评论, 欢迎大佬通过下面的表单留下您的足迹。❤️🍷🍭✅💯</p> // 当没有评论时显示
                 )
             }
-            <Admonition type="tip" icon="💡" title="关于您提交的评论">
-                您提交的评论，作者将会收到通知，在审核之后，将会展示在评论列表中。
-            </Admonition>
+            <NoticeCard {...noticeCard} />
             {/*提交评论的表单*/}
             {submitForm()}
         </div>

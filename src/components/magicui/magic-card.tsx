@@ -1,4 +1,4 @@
-import { CSSProperties, ReactElement, ReactNode, useEffect, useRef, useState } from 'react'
+import React, { CSSProperties, ReactElement, ReactNode, useEffect, useRef, useState } from 'react'
 import {cn} from "@site/src/utils/cnUtils";
 
 interface MousePosition {
