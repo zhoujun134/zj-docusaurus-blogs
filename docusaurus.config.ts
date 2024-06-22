@@ -159,7 +159,7 @@ const config: Config = {
         // 搜索按钮相关
         algolia: {
             appId: 'KNKL89273C',
-            apiKey: '121212',
+            apiKey: '628bcad21219abb3c3078604745ac41a',
             indexName: 'zbus.top',
             contextualSearch: true,
         },
