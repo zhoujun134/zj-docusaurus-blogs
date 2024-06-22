@@ -212,8 +212,8 @@ const config: Config = {
                     to: 'about'
                 },
                 {
-                    href: 'https://zbus.top',
-                    label: '主页',
+                    href: 'https://afdian.net/a/zbusTop',
+                    label: '为爱发电',
                     position: 'right',
                 },
                 {

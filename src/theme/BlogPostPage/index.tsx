@@ -14,7 +14,6 @@ import Comments from "@site/src/components/Comments";
 import {useLocation} from "@docusaurus/router";
 import {VNoticeCardProps} from "@site/src/utils/interface/zjType";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Admonition from "@theme/Admonition";
 import Link from "@docusaurus/Link";
 import NoticeCard from "@site/src/components/NoticeCard";
 

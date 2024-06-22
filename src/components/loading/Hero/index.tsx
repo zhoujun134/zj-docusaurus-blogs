@@ -6,6 +6,7 @@ import HeroSvg from './img/hero.svg'
 
 import SocialLinks from '@site/src/components/SocialLinks'
 import styles from './styles.module.css'
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 const variants: Variants = {
   visible: i => ({
@@ -27,6 +28,7 @@ function Circle() {
 }
 
 function Name() {
+  const {siteConfig} = useDocusaurusContext();
   return (
     <motion.div
       className={styles.hero_text}
@@ -48,7 +50,7 @@ function Name() {
           e.currentTarget.style.setProperty('--mouse-y', `${bounding.y}px`)
         }}
       >
-        <Translate id="homepage.hero.name">Z 不殊</Translate>
+        <Translate id="homepage.hero.name">{siteConfig.title}</Translate>
       </span>
       <span className="ml-1">👋❤️🎉🎉🎉</span>
     </motion.div>

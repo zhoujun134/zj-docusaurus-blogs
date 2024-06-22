@@ -11,6 +11,7 @@ interface CommentsProps {
     // 如果有特定的 props 可以在这里定义
     articleId: string,
     articleTitle?: string,
+    noticeCardBeforeSumitForm?: VNoticeCardProps,
 }
 
 const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
@@ -196,6 +197,10 @@ const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
                         提交评论
                     </button>
                 </div>
+                {props.noticeCardBeforeSumitForm ?
+                    <>
+                        <NoticeCard {...props.noticeCardBeforeSumitForm} />
+                    </> : <></>}
             </form>
         </div>
     )
