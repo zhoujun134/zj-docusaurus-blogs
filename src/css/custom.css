@@ -216,6 +216,10 @@ article .markdown > h3 {
   font-size: 1.4em;
 }
 
+
+article .markdown > p {
+  text-indent: 2em;
+}
 article .markdown > h4 {
   font-size: 1.2em;
 }
