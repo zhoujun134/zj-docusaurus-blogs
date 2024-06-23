@@ -1,16 +1,15 @@
-回过头来还是 docusaurus 香
 ---
 slug: hui-guo-tou-hai-shi-docusaurus-xiang
 title: 回过头来，还是 docusaurus 香！
 authors:
-name: zhoujun134
-title: 不要等! 不管想做什么, 都要立刻动起来。
-url: https://github.com/zhoujun134
-image_url: https://img.zbus.top/zbus/logo.jpg
+    name: zhoujun134
+    title: 不要等! 不管想做什么, 都要立刻动起来。
+    url: https://github.com/zhoujun134
+    image_url: https://img.zbus.top/zbus/logo.jpg
 tags: [随笔]
 image: https://img.zbus.top/zbus/blog202406232248500.jpg
 ---
-
+<!-- truncate -->  
 ![img](https://img.zbus.top/zbus/blog202406232242059.jpg)
 
 这一周很快就过去了，回望这一周，做了些什么内容呢
