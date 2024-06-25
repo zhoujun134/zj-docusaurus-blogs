@@ -23,10 +23,10 @@ export default function Github({ className }: GithubProps) {
                 <Translate id="homepage.feature.github.title">Github</Translate>
             </h2>
             <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-background">
-                {/*<div className="mb-4 flex w-full justify-between gap-4 px-4">*/}
-                {/*    <img src={githubStatsUrl('overview')} alt="GitHub Overview Stats" />*/}
-                {/*    <img src={githubStatsUrl('languages')} alt="GitHub Languages Stats" />*/}
-                {/*</div>*/}
+                <div className="mb-4 flex w-full justify-between gap-4 px-4">
+                    <img src={githubStatsUrl('languages')} alt="GitHub Languages Stats"/>
+                    <img src={githubStatsUrl('overview')} alt="GitHub Overview Stats"/>
+                </div>
                 <GitHubCalendar username="zhoujun134" blockSize={11} colorScheme={isDarkTheme ? 'dark' : 'light'} />
             </div>
         </div>
