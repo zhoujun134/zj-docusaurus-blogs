@@ -1,14 +1,15 @@
 import axios, {AxiosInstance, AxiosError, InternalAxiosRequestConfig} from 'axios';
 import {IResult} from "@site/src/utils/interface/zjType";
+import zsBlogConfig from "@site/zs-blog-config";
 
 // 设置 axios 默认配置
 axios.defaults.withCredentials = true;
 
 // 创建 axios 实例
 const service: AxiosInstance = axios.create({
-    baseURL: "https://zbus.top", // 确保这是正确的 baseURL
-    timeout: 15000,
-    headers: {'Content-Type': 'application/json;charset=utf-8'},
+    baseURL: zsBlogConfig.apiConfig.baseUrl, // 确保这是正确的 baseURL
+    timeout: zsBlogConfig.apiConfig.timeout,
+    headers: zsBlogConfig.apiConfig.headers,
 });
 
 let loading: any;
