@@ -1,8 +1,8 @@
 {
   "label": "Docusaurus 魔改之路",
-  "position": 1,
+  "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "java 的相关基础知识总结文档"
+    "description": "魔改 Docusaurus 的笔记"
   }
 }

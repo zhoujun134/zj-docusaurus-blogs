@@ -11,7 +11,7 @@ keywords: [zj common，java，通用异常处理，json]
 
 ![背景](https://img.zbus.top//zbus/blog/202309241756137.webp)
 
-# 1. zj Commom java 工具类
+# 1. zj Common java 工具类
 
 ## 1.1 简介
 

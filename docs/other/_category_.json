@@ -1,8 +1,8 @@
 {
   "label": "工具日志",
-  "position": 5,
+  "position": 9,
   "link": {
     "type": "generated-index",
-    "description": "工具的一些信息"
+    "description": "一些好用的工具汇总"
   }
 }

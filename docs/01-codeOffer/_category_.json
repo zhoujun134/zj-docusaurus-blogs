@@ -1,0 +1,8 @@
+{
+  "label": "刷题笔记",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "剑指 offer 系列的刷题笔记"
+  }
+}
