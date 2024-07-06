@@ -51,7 +51,9 @@ function BlogPostPageContent({
                     <BlogPostPaginator nextItem={nextItem} prevItem={prevItem}/>
                 </div>
             )}
+            {/*文章版权提示*/}
             <NoticeCard {...noticeCard}/>
+            {/*文章评论组件*/}
             <Comments articleId={pathname} articleTitle={metadata.title}/>
             <BackToTopButton/>
         </BlogLayout>

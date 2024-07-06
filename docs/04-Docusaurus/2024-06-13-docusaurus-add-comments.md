@@ -11,6 +11,38 @@ image: https://img.zbus.top/zbus/blog202403150008819.webp
 ---
 <!-- truncate -->
 
+目前[本站点](https://zbus.top)的评论是是在[当前博客项目](https://github.com/zhoujun134/zj-docusaurus-blogs)的基础上自定义实现的。实际的效果如下:
+
+![image-20240616162345681](https://img.zbus.top/zbus/blog202407061733196.png)
+
+​	其实实现这个评论主要有两部分，
+
+	1. 是展示评论列表;
+	1. 是提交评论。
+
+​	在评论列表上，我们的评论结构是按照这种结构设计的。
+
+```typescript
+export interface ICommentInfo {
+    // 评论id
+    commentId?: string,
+    // 评论作者名称
+    author: string,
+    // 评论内容
+    content: string,
+    // 评论的创建时间
+    createTime?: string,
+    // 评论点赞数量
+    likeNum?: number,
+    // 子评论列表
+    children?: ICommentInfo[],
+}
+```
+
+ 总共两级评论，回复的评论都统一展示到父级评论上即可，实现的效果如上图所示的样子。
+
+## 组件样式 Comments.tsx
+
 首先编写评论的组件信息, 创建一个评论的 Comments.tsx 这里会书写我们对应的评论信息
 
 ```typescript
@@ -241,7 +273,7 @@ const Comments: React.FC<CommentsProps> = () => {
 export default Comments;
 ```
 
-上面代码中的 css 样式代码如下：
+在上面的代码中，我们还使用到，部分css 样式。其中的 css 样式代码如下：
 
 ```css
 /* src/components/Comments/Comments.module.css */
@@ -747,3 +779,181 @@ service.interceptors.response.use((response) => {
 export default service;
 
 ```
+
+以上就是我在使用 docusaurus 过程中，对于评论组件的实现。
+
+## 注入 blogs 和 文档当中
+
+在 docusauru 中，如果想要在对应的页面实现对应的一些样式，需要利用 [swizzle](https://docusaurus.io/zh-CN/docs/swizzling) 特性，分别在博客页面和 docs 页面中注入我们的评论组件。
+
+### 博客页面注入
+
+在博客中，对应的主题页面为一个 BlogPostPage 下，我们可以通过下面的命令来进行生成主题的博客样式代码：
+
+```bash
+npm run swizzle @docusaurus/theme-classic BlogPostPage -- --eject --typescript
+```
+
+当然执行上面代码需要在你的项目的根目录执行。
+
+执行完之后，我们主要修改 src/theme/BlogPostPage/index.tsx 下面的内容。在 BlogPostPageContent 方法中，博客的文章结尾，注入我们的评论组件即可。其改写之后的代码如下所示：
+
+```typescript
+import type {BlogSidebar} from '@docusaurus/plugin-content-blog'
+import {HtmlClassNameProvider, ThemeClassNames} from '@docusaurus/theme-common'
+import {BlogPostProvider, useBlogPost} from '@docusaurus/theme-common/internal'
+import BackToTopButton from '@theme/BackToTopButton'
+import BlogLayout from '@theme/BlogLayout'
+import BlogPostItem from '@theme/BlogPostItem'
+import type {Props} from '@theme/BlogPostPage'
+import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata'
+import BlogPostPaginator from '@theme/BlogPostPaginator'
+import TOC from '@theme/TOC'
+import React, {type ReactNode} from 'react'
+import {cn} from "@site/src/utils/cnUtils";
+import Comments from "@site/src/components/Comments";
+import {useLocation} from "@docusaurus/router";
+import {VNoticeCardProps} from "@site/src/utils/interface/zjType";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Link from "@docusaurus/Link";
+import NoticeCard from "@site/src/components/NoticeCard";
+
+function BlogPostPageContent({
+                                 sidebar,
+                                 children,
+                             }: {
+    sidebar: BlogSidebar
+    children: ReactNode
+}): JSX.Element {
+    const {pathname} = useLocation();
+    const {metadata, toc} = useBlogPost()
+    const {nextItem, prevItem, frontMatter} = metadata
+    const {
+        hide_table_of_contents: hideTableOfContents,
+        toc_min_heading_level: tocMinHeadingLevel,
+        toc_max_heading_level: tocMaxHeadingLevel,
+        hide_comment: hideComment,
+    } = frontMatter
+
+    const noticeCard: VNoticeCardProps = copyrightVNoticeCardProps();
+    return (
+        <BlogLayout
+            sidebar={sidebar}
+            toc={
+                !hideTableOfContents && toc.length > 0 ? (
+                    <TOC toc={toc} minHeadingLevel={tocMinHeadingLevel} maxHeadingLevel={tocMaxHeadingLevel}/>
+                ) : undefined
+            }
+        >
+            <BlogPostItem>{children}</BlogPostItem>
+
+            {(nextItem || prevItem) && (
+                <div className="margin-bottom--md">
+                    <BlogPostPaginator nextItem={nextItem} prevItem={prevItem}/>
+                </div>
+            )}
+            {/*文章版权提示*/}
+            <NoticeCard {...noticeCard}/>
+            {/*文章评论组件*/}
+            <Comments articleId={pathname} articleTitle={metadata.title}/>
+            <BackToTopButton/>
+        </BlogLayout>
+    )
+}
+
+function copyrightVNoticeCardProps(): VNoticeCardProps {
+    const {siteConfig} = useDocusaurusContext();
+    const {pathname} = useLocation();
+    const curDocsPath = siteConfig.url + pathname;
+    return {
+        title: "本文声明",
+        href: curDocsPath,
+        type: 'danger',
+        icon: '💡',
+        description: <>
+            <p>转载请注明出处，谢谢合作！转载本文请声明原文章链接如下:</p>
+            <p><strong>原文链接: </strong><a href={curDocsPath}>{curDocsPath}</a></p>
+            <p><strong>作者: </strong><a href={siteConfig.url}>{siteConfig.title}</a></p>
+            <p><Link href={siteConfig.url}>{siteConfig.title}</Link> 致力于分享有价值的信息和知识。我们尊重并保护知识产权。本文仅代表作者观点，不代表任何立场。
+                如果本文有所侵权，请联系作者删除或修改！</p>
+        </>
+    }
+}
+
+export default function BlogPostPage(props: Props): JSX.Element {
+    const BlogPostContent = props.content
+    return (
+        <BlogPostProvider content={props.content} isBlogPostPage>
+            <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogPostPage)}>
+                <BlogPostPageMetadata/>
+                <BlogPostPageContent sidebar={props.sidebar}>
+                    <BlogPostContent/>
+                </BlogPostPageContent>
+            </HtmlClassNameProvider>
+        </BlogPostProvider>
+    )
+}
+```
+
+### docs 文章中的注入
+
+和上面博客页面注入同理，使用如下命令创建 docs 的页面样式代码，然后我们进行修改和自定义。
+
+通过执行上面的命令之后，我们将看到如下的内容，src/theme/DocItem/Content/index.tsx，这个文件就是我们需要修改的地方。主要修改 ContentWrapper 函数。
+
+```typescript
+import React from 'react';
+import Content from '@theme-original/DocItem/Content';
+import type ContentType from '@theme/DocItem/Content';
+import type {WrapperProps} from '@docusaurus/types';
+import Comments from "@site/src/components/Comments";
+import {useLocation} from "@docusaurus/router";
+import NoticeCard from "@site/src/components/NoticeCard";
+import {VNoticeCardProps} from "@site/src/utils/interface/zjType";
+import Link from "@docusaurus/Link";
+
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+type Props = WrapperProps<typeof ContentType>;
+
+function copyrightVNoticeCardProps(): VNoticeCardProps {
+    const {siteConfig} = useDocusaurusContext();
+    const {pathname} = useLocation();
+    const curDocsPath = siteConfig.url + pathname;
+    return {
+        title: "本文声明",
+        href: curDocsPath,
+        type: 'danger',
+        icon: '💡',
+        description:
+            <>
+                <p>转载请注明出处，谢谢合作！转载本文请声明原文章链接如下:</p>
+                <p><strong>原文链接: </strong><a href={curDocsPath}>{curDocsPath}</a></p>
+                <p><strong>作者: </strong><a href={siteConfig.url}>{siteConfig.title}</a></p>
+                <p><Link href={siteConfig.url}>{siteConfig.title}</Link> 致力于分享有价值的信息和知识。我们尊重并保护知识产权。本文仅代表作者观点，不代表任何立场。
+                    如果本文有所侵权，请联系作者删除或修改！</p>
+            </>
+    }
+}
+
+export default function ContentWrapper(props: Props): JSX.Element {
+    const {pathname} = useLocation();
+    const noticeCard: VNoticeCardProps = copyrightVNoticeCardProps();
+    return (
+        <>
+            <Content {...props} />
+            {/*版本提示卡片*/}
+            <NoticeCard {...noticeCard}/>
+            {/*评论组件注入*/}
+            <Comments articleId={pathname}/>
+        </>
+    );
+}
+```
+
+以上就是我的博客评论的实现，欢迎 fork 和 star [本项目](https://github.com/zhoujun134/zj-docusaurus-blogs)，如果您有什么建议和遇到一些什么问题，欢迎联系我。一起改进一起进步。
+
+
+
+
+

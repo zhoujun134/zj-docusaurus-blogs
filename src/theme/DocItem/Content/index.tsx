@@ -7,7 +7,6 @@ import {useLocation} from "@docusaurus/router";
 import NoticeCard from "@site/src/components/NoticeCard";
 import {VNoticeCardProps} from "@site/src/utils/interface/zjType";
 import Link from "@docusaurus/Link";
-import Admonition from "@theme/Admonition";
 
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
@@ -39,7 +38,9 @@ export default function ContentWrapper(props: Props): JSX.Element {
     return (
         <>
             <Content {...props} />
+            {/*版本提示卡片*/}
             <NoticeCard {...noticeCard}/>
+            {/*评论组件注入*/}
             <Comments articleId={pathname}/>
         </>
     );

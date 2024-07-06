@@ -62,7 +62,7 @@ npm run build
 
 请求参数:
 
-```javascript
+```typescript
 export interface ICommentSubmitRequest {
     articleId?: string,						// 文章 id
     parentCommentId?: string,			// 父评论 id
@@ -75,7 +75,7 @@ export interface ICommentSubmitRequest {
 
 响应参数:
 
-```java
+```typescript
 export interface IResult<boolean> {
     code: string
     message: string
@@ -97,7 +97,7 @@ articleId: string    // 文章 id
 
 IResult<ICommentInfo[]> 类型
 
-```javascript
+```typescript
 export interface IResult<T> {
     code: string
     message: string
