@@ -7,7 +7,6 @@ export default function NoticeCard(noticeCard: VNoticeCardProps) {
             <Admonition type={noticeCard.type} icon={noticeCard.icon} title={noticeCard.title}>
                 {noticeCard.description}
             </Admonition>
-
         </div>
     );
 }
