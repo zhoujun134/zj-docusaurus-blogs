@@ -15,7 +15,7 @@ interface CommentsProps {
 }
 
 const HtmlContent = ({ html }) => {
-    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+    return <div dangerouslySetInnerHTML={{ __html: html.replace(/\n/g, '<br />') }} />;
 };
 
 const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
