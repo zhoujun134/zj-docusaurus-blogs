@@ -8,10 +8,6 @@ import FriendCard from "@site/src/pages/friends/_components/FriendCard";
 import Comments from "@site/src/components/Comments";
 import {Friend, IFriendInfo, IResult, VNoticeCardProps} from "@site/src/utils/interface/zjType";
 import service from "@site/src/utils/service";
-import NoticeCard from "@site/src/components/NoticeCard";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import {useLocation} from "@docusaurus/router";
-import Link from "@docusaurus/Link";
 
 const TITLE = '友链'
 const DESCRIPTION = '有很多良友，胜于有很多财富。'
@@ -104,7 +100,7 @@ function FriendCards() {
         type: 'info',
         icon: '💡',
         description: <>
-            <p>请在申请之前，确保已经在自己的网站已经添加本站的友链。</p>
+            <p>请在申请之前，确保已经在自己的网站中添加了本站的友链。</p>
             <CodeBlock
                 language="yaml"
                 title="申请格式"
