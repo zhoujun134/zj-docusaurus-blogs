@@ -20,7 +20,7 @@ const ADD_FRIEND_URL = '#submitCommentForm'
 const SITE_INFO = `title: 'Z 不殊'
 description: '想要拥有的必须现在就去做'
 website: 'https://zbus.top'
-avatar: 'https://img.zbus.top/logo.png'
+avatar: 'https://zbus.top/logo.png'
 `
 
 function SiteInfo() {
