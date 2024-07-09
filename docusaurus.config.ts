@@ -3,7 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import {BlogPost} from "@docusaurus/plugin-content-blog";
 
-const beian = '闽ICP备2020017848号-2'
+const beian = '京ICP备2023022073号-1'
+const beian1 = '京公网安备11010802044104号'
 
 const config: Config = {
     title: 'Z 不殊',
@@ -271,7 +272,13 @@ const config: Config = {
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+            copyright: `
+            <p style="margin-bottom: 0;"><a href="http://beian.miit.gov.cn/">${beian}</a></p>
+        <p style="display: inline-flex; align-items: center;"><img style="height:20px;margin-right: 0.5rem;" src="/img/police.png" alt="police" height="20"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${
+                beian1.match(/\d+/)?.[0]
+            }" >${beian1}</a></p>
+        <p>Copyright © 2024 - PRESENT Z不殊 Built with Docusaurus.</p>
+            `,
         },
         prism: {
             theme: prismThemes.okaidia,
