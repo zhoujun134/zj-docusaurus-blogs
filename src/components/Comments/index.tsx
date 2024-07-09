@@ -14,6 +14,10 @@ interface CommentsProps {
     noticeCardBeforeSumitForm?: VNoticeCardProps,
 }
 
+const HtmlContent = ({ html }) => {
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+};
+
 const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
 
     const [comments, setComments] = useState<ICommentInfo[]>([]);
@@ -134,7 +138,7 @@ const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
             <div className={styles.commentItemUp}>
                 <AvatarSVG char={comment.author[0]}/>
                 <p className={styles.commentItemContent}>
-                    {comment.content}
+                     <HtmlContent html={comment.content}/>
                 </p>
             </div>
             <div className={styles.commentItemDown}>
