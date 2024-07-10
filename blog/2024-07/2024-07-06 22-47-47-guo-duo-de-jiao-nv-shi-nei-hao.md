@@ -11,7 +11,7 @@ image: https://img.zbus.top/zbus/blog202407062251005.jpg
 ---
 <!-- truncate -->  
 
-![img](https://img.zbus.top/zbus/blog202407070935530.jpg)
+![img](./images/blog202407070935530.png)
 
 这一周，博客的事情算是告一段落了，后面想通了，博客存在的意义，无非是承载知识和想法的记忆体，太过的折腾其实也没有多大的意义，能用得爽即可。
 
