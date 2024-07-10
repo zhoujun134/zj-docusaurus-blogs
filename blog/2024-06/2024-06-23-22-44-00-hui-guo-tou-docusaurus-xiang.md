@@ -10,7 +10,7 @@ tags: [随笔]
 image: https://img.zbus.top/zbus/blog202406232248500.jpg
 ---
 <!-- truncate -->  
-![img](./images/blog202406232242059.png)
+![img](https://img.zbus.top/zbus/blog202406232242059.jpg)
 
 这一周很快就过去了，回望这一周，做了些什么内容呢
 
@@ -36,4 +36,4 @@ image: https://img.zbus.top/zbus/blog202406232248500.jpg
 
 利用好微信读书，在接下来的一周，争取把 《[Java 并发编程之美--翟陆续 薛宾田](https://weread.qq.com/web/search/books?author=翟陆续 薛宾田&ii=81c32b507184869281c2a23)》这本书看完。随时记录自己的工作和学习计划。开始总结和归档自己的知识点。
 
-![img](./images/blog202406232243440.png)
+![img](https://img.zbus.top/zbus/blog202406232243440.jpg)

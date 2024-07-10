@@ -12,7 +12,7 @@ image: https://img.zbus.top/zbus/blog202403140854791.png
  
  作者分享了自己创建博客的经历，尝试过多个开源博客项目，但都存在一些限制和不喜欢的地方，于是决定自己书写一个博客。经过努力，终于完成了第一版的系统，基于 Vue3 + TypeScript + Element-Plus 构建前端，Java 语言编写的 SpringBoot 构建后端，数据库采用 Mysql + Redis。博客已经实现了多个功能，如文章列表、归档、文章分类卡片等，未来还计划优化页面渲染、访问数统计、评论提交限制等功能。 
 <!-- truncate -->  
- ![img](./images/blog202405070816095.png)
+ ![img](https://img.zbus.top/zbus/blog202405070816095.jpg)
 
 👨‍💻 对于博客的建设，经历了一段时间的折腾，反反复复可能都不能满意，其中尝试过，WordPress， hexo, docusaurus, halo 等这些开源的博客项目， 但是都多多少少有一些限制和不喜欢的地方，最终还是放弃了它们。
 
@@ -64,3 +64,5 @@ Notice: 由于前端页面是边学边写的，可能会存在一些 bug，欢�
 ❤️ ❤️ ❤️ 
 
 以上就是当前这个项目所实现的一部分内容，欢迎大家评论和指正！
+
+![img](https://img.zbus.top/zbus/blog202405070838514.jpg)
