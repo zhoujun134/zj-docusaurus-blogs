@@ -213,11 +213,6 @@ const config: Config = {
                     to: 'about'
                 },
                 {
-                    href: 'https://afdian.net/a/zbusTop',
-                    label: '为爱发电',
-                    position: 'right',
-                },
-                {
                     href: 'https://github.com/zhoujun134',
                     label: 'GitHub',
                     position: 'right',
