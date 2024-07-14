@@ -48,11 +48,11 @@ npm run build
 
 ### 启用评论
 
-![image-20240616162345681](https://img.zbus.top/zbus/blog202406161623725.png)
+![image-20240616162345681](https://zbus.top/img/blog/blog202406161623725.png)
 
 该配置主要在 themeConfig 下的 commentConfig，其中主要包含了 docs 和 blog 的评论是否启用，默认是不启用的，需要自行开启，commentApiHost 为后端的评论接口api地址，主要
 
-![image-20240616161142489](https://img.zbus.top/zbus/blog202406161611516.png)
+![image-20240616161142489](https://zbus.top/img/blog/blog202406161611516.png)
 
 在上面的配置中，我们将用到两个接口，一个是提交评论，一个是获取评论列表的接口。其接口的定义要求如下:
 
