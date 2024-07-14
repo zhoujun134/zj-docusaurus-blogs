@@ -51,7 +51,7 @@ export async function getFriendsFromService() {
         return JSON.parse(JSON.stringify(resp)) as IResult<Map<string, IFriendInfo[]>>;
     } catch (error) {
         let {message} = error;
-        window.alert("系统开小差了！请稍后重试！" + message);
+        // window.alert("系统开小差了！请稍后重试！" + message);
         return {
             code: 500,
             message: "系统开小差了！请稍后重试！" + message,

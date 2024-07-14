@@ -2,16 +2,17 @@
 
 本站点基于 [Docusaurus](https://docusaurus.io/zh-CN/) 进行的构建，同时也做了一些修改，其中主要也参考了 [愧怍](https://kuizuo.cn/) 对于 Docusaurus 的修改。
 
-![image-20240616153831842](https://img.zbus.top/zbus/blog202406161538926.png)
+![image-20240616153831842](https://zbus.top/img/blog/blog202406161538926.png)
 
-![image-20240616153908416](https://img.zbus.top/zbus/blog202406161539445.png)
+![image-20240616153908416](https://zbus.top/img/blog/blog202406161539445.png)
 
 本站实现的特点如下：
 
 + 自定义后端的评论表单，不依赖 Gitalk （网络不太行）
 + 自定义部分样式。
 + 支持后端发布内容到自己的 Docusaurus 站点。后端部署地址 [点击跳转]
-
++ 代码支持折叠
++ 评论来源于后端存储
 
 
 ## 如何安装
@@ -44,7 +45,9 @@ npm run build
 
 ## 一些自定义配置
 
-接下来就是讲解一些我们站点的一些自定义配置。主要包括，评论, 评论列表等。
+接下来就是讲解一些我们站点的一些自定义配置。主要包括，评论, 评论列表等。本文的评论依赖的后端服务在
+[zj-docusaurus-blogs-backend](https://github.com/zhoujun134/zj-docusaurus-blogs-backend) 中，
+可以下载之后，运行即可，也可以按照接口定义自行进行实现。
 
 ### 启用评论
 
