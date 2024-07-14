@@ -131,6 +131,13 @@ const config: Config = {
                 content: 'Z 不殊的个人博客',
             },
         },
+        {
+            tagName: 'meta',
+            attributes: {
+                name: 'baidu-site-verification',
+                content: 'codeva-q5wJCLbMma',
+            },
+        },
     ],
     themeConfig: {
         // 图片放大缩小效果
