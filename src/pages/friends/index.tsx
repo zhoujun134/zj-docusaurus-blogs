@@ -62,6 +62,7 @@ export async function getFriendsFromService() {
 
 function FriendCards() {
     const [friends, setFriends] = useState<Friend[]>([]);
+    const [tools, setTools] = useState<Friend[]>([]);
     const fetchFriendsFromServer = async () => {
         getFriendsFromService().then((result: IResult<Map<string, IFriendInfo[]>>) => {
             if (!result && result.code != "0") {
@@ -69,18 +70,33 @@ function FriendCards() {
             }
             const friendGroup: Map<string, IFriendInfo[]> = new Map(Object.entries(result.data));
             const friendList: Friend[] = [];
+            const toolList: Friend[] = [];
             friendGroup.forEach((friends, key) => {
-                friends.forEach((friend: IFriendInfo) => {
-                    const oneFriend = {
-                        title: friend.title,
-                        description: friend.description,
-                        website: friend.siteUrl,
-                        avatar: friend.logoUrl
-                    }
-                    friendList.push(oneFriend)
-                })
+                if (key == '我的工具组') {
+                    friends.forEach((friend: IFriendInfo) => {
+                        const oneTool = {
+                            title: friend.title,
+                            description: friend.description,
+                            website: friend.siteUrl,
+                            avatar: friend.logoUrl
+                        }
+                        toolList.push(oneTool)
+                    })
+                }
+                if (key == '我的友链') {
+                    friends.forEach((friend: IFriendInfo) => {
+                        const oneFriend = {
+                            title: friend.title,
+                            description: friend.description,
+                            website: friend.siteUrl,
+                            avatar: friend.logoUrl
+                        }
+                        friendList.push(oneFriend)
+                    })
+                }
             })
             setFriends(friendList)
+            setTools(toolList)
         })
     };
 
@@ -112,6 +128,13 @@ function FriendCards() {
     return (
         <section className="margin-top--lg margin-bottom--lg">
             <div className={styles.friendContainer}>
+                <h2>工具列表</h2>
+                <ul className={styles.friendList}>
+                    {tools.map(tool => (
+                        <FriendCard key={tool.avatar} friend={tool}/>
+                    ))}
+                </ul>
+                <h2>良师益友</h2>
                 <ul className={styles.friendList}>
                     {friends.map(friend => (
                         <FriendCard key={friend.avatar} friend={friend}/>
