@@ -8,6 +8,7 @@ import FriendCard from "@site/src/pages/friends/_components/FriendCard";
 import Comments from "@site/src/components/Comments";
 import {Friend, IFriendInfo, IResult, VNoticeCardProps} from "@site/src/utils/interface/zjType";
 import service from "@site/src/utils/service";
+import {normalizeFriends} from "@site/src/features/friends/normalizeFriends";
 
 const TITLE = '友链'
 const DESCRIPTION = '有很多良友，胜于有很多财富。'
@@ -42,20 +43,22 @@ function FriendHeader() {
     )
 }
 
-export async function getFriendsFromService() {
+type FriendGroups = Record<string, IFriendInfo[]>;
+
+export async function getFriendsFromService(): Promise<IResult<FriendGroups>> {
     try {
-        const resp = await service({
+        return await service<IResult<FriendGroups>>({
             url: '/api/friends',
             method: 'get'
         });
-        return JSON.parse(JSON.stringify(resp)) as IResult<Map<string, IFriendInfo[]>>;
     } catch (error) {
-        let {message} = error;
-        // window.alert("系统开小差了！请稍后重试！" + message);
+        const message = error instanceof Error
+            ? error.message
+            : (error as IResult<unknown>)?.message ?? '请求失败';
         return {
-            code: 500,
+            code: '-1',
             message: "系统开小差了！请稍后重试！" + message,
-            data: {} as Map<string, IFriendInfo[]>
+            data: {}
         };
     }
 }
@@ -64,46 +67,15 @@ function FriendCards() {
     const [friends, setFriends] = useState<Friend[]>([]);
     const [tools, setTools] = useState<Friend[]>([]);
     const fetchFriendsFromServer = async () => {
-        getFriendsFromService().then((result: IResult<Map<string, IFriendInfo[]>>) => {
-            if (!result && result.code != "0") {
-                return;
-            }
-            const friendGroup: Map<string, IFriendInfo[]> = new Map(Object.entries(result.data));
-            const friendList: Friend[] = [];
-            const toolList: Friend[] = [];
-            friendGroup.forEach((friends, key) => {
-                if (key == '我的工具组') {
-                    friends.forEach((friend: IFriendInfo) => {
-                        const oneTool = {
-                            title: friend.title,
-                            description: friend.description,
-                            website: friend.siteUrl,
-                            avatar: friend.logoUrl
-                        }
-                        toolList.push(oneTool)
-                    })
-                }
-                if (key == '我的友链') {
-                    friends.forEach((friend: IFriendInfo) => {
-                        const oneFriend = {
-                            title: friend.title,
-                            description: friend.description,
-                            website: friend.siteUrl,
-                            avatar: friend.logoUrl
-                        }
-                        friendList.push(oneFriend)
-                    })
-                }
-            })
-            setFriends(friendList)
-            setTools(toolList)
-        })
+        const result = await getFriendsFromService();
+        const normalized = normalizeFriends(result);
+        setFriends(normalized.friends);
+        setTools(normalized.tools);
     };
 
     // 组件挂载完成后获取评论列表
     useEffect(() => {
-        fetchFriendsFromServer().then(r => {
-        });
+        void fetchFriendsFromServer();
     }, []); // 空依赖数组表示这个 effect 只会在组件挂载时运行一次
 
     const applyContent = '' +
