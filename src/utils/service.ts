@@ -14,6 +14,28 @@ const service = axios.create({
 
 const requestState = createRequestState()
 
+type RequestErrorLike = {
+  response?: unknown
+  request?: unknown
+  message?: string
+}
+
+export function normalizeRequestError(error: RequestErrorLike) {
+  let errorMsg = '请求出现异常'
+  if (error.response) {
+    errorMsg = error.message || errorMsg
+  } else if (error.request) {
+    errorMsg = '请求已发出，但没有收到响应'
+  } else {
+    errorMsg = error.message || errorMsg
+  }
+  return {
+    code: '-1',
+    message: errorMsg,
+    data: {},
+  }
+}
+
 // 请求拦截器
 service.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
@@ -37,25 +59,8 @@ service.interceptors.response.use(
     return response.data
   },
   (error: AxiosError) => {
-    console.error('err' + error)
     requestState.finish()
-    let errorMsg: string = '请求出现异常'
-    if (error.response) {
-      // 服务器端返回的异常信息
-      errorMsg = error.message || errorMsg
-    } else if (error.request) {
-      // 请求已发出，但没有收到响应
-      errorMsg = '请求已发出，但没有收到响应'
-    } else {
-      // 发生了触发请求错误的问题
-      errorMsg = error.message || errorMsg
-    }
-    const errResult = {
-      code: '-1',
-      message: errorMsg,
-      data: {},
-    }
-    return Promise.reject(errResult)
+    return Promise.reject(normalizeRequestError(error))
   },
 )
 
