@@ -152,12 +152,14 @@ const config: Config = {
     commentConfig: {
       docs: true, // 启用 docs 的评论功能
       blog: true, // 启用 blog 的评论功能
-      commentApiHost: 'https://zbus.top', // 评论来源的 api 域名
-      api: {
-        // 提交评论
-        submitComment: '/api/comment/submitComment',
-        // 评论列表
-        commentList: '/api/comment/list',
+      provider: 'giscus',
+      giscus: {
+        repo: 'zhoujun134/zj-docusaurus-blogs',
+        repoId: process.env.GISCUS_REPO_ID ?? 'R_kgDOMKBFkQ',
+        commentsCategory: '站点评论',
+        commentsCategoryId: process.env.GISCUS_COMMENTS_CATEGORY_ID ?? '',
+        friendCategory: '友链申请',
+        friendCategoryId: process.env.GISCUS_FRIEND_CATEGORY_ID ?? '',
       },
     },
     // 搜索按钮相关
