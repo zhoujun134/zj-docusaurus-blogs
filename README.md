@@ -8,11 +8,11 @@
 
 主要功能：
 
-- 自定义评论表单，不依赖 Gitalk
-- 评论内容经过前端安全净化
+- GitHub Discussions 与 Giscus 评论
+- 博客、文档和友链申请使用独立评论映射
 - 支持明暗主题、项目展示和友链
 - 代码支持复制、自动换行和折叠
-- 评论后端位于 [zj-docusaurus-blogs-backend](https://github.com/zhoujun134/zj-docusaurus-blogs-backend)
+- 提供历史评论预演、迁移和断点续传工具
 
 ## 安装
 
@@ -47,37 +47,6 @@ npm run build
 
 ## 评论配置
 
-评论开关和接口配置位于 `docusaurus.config.ts` 的 `themeConfig.commentConfig`。文档和博客可以分别启用评论，博客文章还可以通过 Front Matter 的 `hide_comment: true` 单独关闭评论。
+评论开关和 Giscus 配置位于 `docusaurus.config.ts` 的 `themeConfig.commentConfig`。文档和博客可以分别启用评论，博客文章还可以通过 Front Matter 的 `hide_comment: true` 单独关闭评论。
 
-评论提交接口接收：
-
-```typescript
-export interface ICommentSubmitRequest {
-  articleId?: string
-  articleTitle?: string
-  parentCommentId?: string | null
-  replyCommentId?: string | null
-  author: string
-  email: string
-  content: string
-}
-```
-
-评论列表接口通过 `articleId` 查询，并返回：
-
-```typescript
-export interface IResult<T> {
-  code: string
-  message: string
-  data?: T
-}
-
-export interface ICommentInfo {
-  commentId?: string
-  author: string
-  content: string
-  createTime?: string
-  likeNum?: number
-  children?: ICommentInfo[]
-}
-```
+本地和部署环境需要配置 `.env.example` 中的三个公开 Giscus ID。GitHub Discussions、历史数据导出、预演、正式迁移和回滚步骤见 [评论迁移指南](scripts/comments/README.md)。
