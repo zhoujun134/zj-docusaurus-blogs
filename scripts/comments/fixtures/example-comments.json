@@ -1,0 +1,22 @@
+[
+  {
+    "commentId": "example-root",
+    "articleId": "/blog/example",
+    "articleTitle": "示例文章",
+    "parentCommentId": null,
+    "replyCommentId": null,
+    "author": "示例作者",
+    "content": "第一条历史评论",
+    "createTime": "2024-05-01T12:30:00+08:00"
+  },
+  {
+    "commentId": "example-reply",
+    "articleId": "/blog/example",
+    "articleTitle": "示例文章",
+    "parentCommentId": "example-root",
+    "replyCommentId": "example-root",
+    "author": "回复者",
+    "content": "一条历史回复",
+    "createTime": "2024-05-01T13:00:00+08:00"
+  }
+]
