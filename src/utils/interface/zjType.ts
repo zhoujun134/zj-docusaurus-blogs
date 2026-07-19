@@ -12,15 +12,6 @@ export interface Page<T> {
   records?: T[]
 }
 
-export interface ICommentInfo {
-  commentId?: string
-  author: string
-  content: string
-  createTime?: string
-  likeNum?: number
-  children?: ICommentInfo[]
-  isShowSubmit?: boolean
-}
 export interface IFriendInfo {
   title?: string
   siteUrl?: string
@@ -45,13 +36,4 @@ export interface VNoticeCardProps {
 // 响应体 ========================= end =======================================
 
 // 请求体 ======================== start =======================================
-export interface ICommentSubmitRequest {
-  articleId?: string
-  articleTitle?: string
-  parentCommentId?: string | null
-  replyCommentId?: string | null
-  author: string
-  email: string
-  content: string
-}
 // 请求体 ======================== end =======================================
