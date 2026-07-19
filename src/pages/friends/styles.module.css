@@ -1,3 +1,5 @@
+@reference "../../css/custom.css";
+
 .friendContainer {
   @apply max-w-4xl mx-auto py-2 px-4;
 }

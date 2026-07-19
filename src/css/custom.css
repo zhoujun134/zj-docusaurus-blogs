@@ -3,9 +3,22 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../../tailwind.config.mjs";
+@import "tailwindcss";
+
+.bg-grid-slate-50 {
+  background-image:
+    linear-gradient(to right, rgb(248 250 252) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(248 250 252) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+[data-theme='dark'] .dark\:bg-grid-slate-700\/25 {
+  background-image:
+    linear-gradient(to right, rgb(51 65 85 / 25%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(51 65 85 / 25%) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
 /* You can override the default Infima variables here. */
 :root {
   --content-background: #fdfdfd;

@@ -104,9 +104,9 @@ const config: Config = {
             return {
                 name: 'docusaurus-tailwindcss',
                 configurePostCss(postcssOptions) {
-                    // Appends TailwindCSS and AutoPrefixer.
-                    postcssOptions.plugins.push(require('tailwindcss'))
-                    postcssOptions.plugins.push(require('autoprefixer'))
+                    // Tailwind 4 ships its PostCSS integration as a separate package.
+                    // eslint-disable-next-line @typescript-eslint/no-require-imports
+                    postcssOptions.plugins.push(require('@tailwindcss/postcss'))
                     return postcssOptions
                 },
             }
