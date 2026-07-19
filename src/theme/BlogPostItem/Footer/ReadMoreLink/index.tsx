@@ -17,7 +17,7 @@ function ReadMoreLabel() {
   )
 }
 
-export default function BlogPostItemFooterReadMoreLink(props: Props): JSX.Element {
+export default function BlogPostItemFooterReadMoreLink(props: Props): React.JSX.Element {
   const { blogPostTitle, ...linkProps } = props
   return (
     <Link

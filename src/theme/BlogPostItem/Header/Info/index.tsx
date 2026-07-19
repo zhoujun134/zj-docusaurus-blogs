@@ -1,6 +1,7 @@
 import { translate } from '@docusaurus/Translate'
 import { usePluralForm } from '@docusaurus/theme-common'
-import { useBlogPost, useDateTimeFormat } from '@docusaurus/theme-common/internal'
+import {useBlogPost} from '@docusaurus/plugin-content-blog/client'
+import {useDateTimeFormat} from '@docusaurus/theme-common/internal'
 import type { Props } from '@theme/BlogPostItem/Header/Info'
 
 import { Icon } from '@iconify/react'
@@ -42,7 +43,7 @@ function DateTime({ date, formattedDate }: { date: string; formattedDate: string
   )
 }
 
-export default function BlogPostItemHeaderInfo({ className }: Props): JSX.Element {
+export default function BlogPostItemHeaderInfo({ className }: Props): React.JSX.Element {
   const { metadata } = useBlogPost()
   const { date, tags, readingTime } = metadata
 

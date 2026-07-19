@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import type React from 'react'
 
 interface SectionProps {
-  title: string | JSX.Element
+  title: string | React.JSX.Element
   icon?: string
   href?: string
   children: React.ReactNode

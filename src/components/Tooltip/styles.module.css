@@ -1,4 +1,13 @@
+.tooltipTrigger {
+  position: relative;
+  display: inline-flex;
+}
+
 .tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 4px;
   padding: 4px 8px;
   color: var(--site-color-tooltip);
@@ -9,22 +18,17 @@
   font-weight: 500;
   max-width: 300px;
   opacity: 0.92;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .tooltipArrow {
-  visibility: hidden;
-}
-
-.tooltipArrow::before {
-  visibility: visible;
-  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--site-color-tooltip-background);
   transform: rotate(45deg);
-}
-
-.tooltip[data-popper-placement^='top'] > .tooltipArrow {
-  bottom: -4px;
-}
-
-.tooltip[data-popper-placement^='bottom'] > .tooltipArrow {
-  top: -4px;
+  translate: -50% 0;
 }

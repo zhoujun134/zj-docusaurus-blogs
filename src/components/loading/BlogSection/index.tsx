@@ -45,7 +45,7 @@ export function BlogItem({ post }: { post: BlogPost }) {
     )
 }
 
-export default function BlogSection(): JSX.Element {
+export default function BlogSection(): React.JSX.Element {
     const blogData = usePluginData('docusaurus-plugin-content-blog') as {
         posts: BlogPost[]
         postNum: number

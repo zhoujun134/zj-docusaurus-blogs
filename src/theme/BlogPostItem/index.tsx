@@ -1,4 +1,4 @@
-import { useBlogPost } from '@docusaurus/theme-common/internal'
+import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
 import type { Props } from '@theme/BlogPostItem'
 import BlogPostItemContainer from '@theme/BlogPostItem/Container'
 import BlogPostItemContent from '@theme/BlogPostItem/Content'
@@ -12,7 +12,7 @@ function useContainerClassName() {
   return !isBlogPostPage ? 'group/blog rounded-md mt-0 bg-blog mb-8 shadow-blog' : ''
 }
 
-export default function BlogPostItem({ children, className }: Props): JSX.Element {
+export default function BlogPostItem({ children, className }: Props): React.JSX.Element {
   const containerClassName = useContainerClassName()
   return (
     <BlogPostItemContainer className={cn(containerClassName, className)}>

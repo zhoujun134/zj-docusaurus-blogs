@@ -1,9 +1,9 @@
-import {useBlogPost} from '@docusaurus/theme-common/internal'
+import {useBlogPost} from '@docusaurus/plugin-content-blog/client'
 import {useBaseUrlUtils} from '@docusaurus/useBaseUrl'
 import type {Props} from '@theme/BlogPostItem/Container'
 import {cn} from "@site/src/utils/cnUtils";
 
-export default function BlogPostItemContainer({children, className}: Props): JSX.Element {
+export default function BlogPostItemContainer({children, className}: Props): React.JSX.Element {
     const {frontMatter, assets} = useBlogPost()
     const {withBaseUrl} = useBaseUrlUtils()
     const image = assets.image ?? frontMatter.image

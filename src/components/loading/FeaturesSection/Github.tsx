@@ -1,5 +1,5 @@
 import Translate from '@docusaurus/Translate'
-import GitHubCalendar from 'react-github-calendar'
+import {GitHubCalendar} from 'react-github-calendar'
 
 import { useColorMode } from '@docusaurus/theme-common'
 import { Icon } from '@iconify/react'

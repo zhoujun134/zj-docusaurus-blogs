@@ -39,7 +39,7 @@ function AdmonitionContent({children}: Pick<Props, 'children'>) {
   ) : null;
 }
 
-export default function AdmonitionLayout(props: Props): JSX.Element {
+export default function AdmonitionLayout(props: Props): React.JSX.Element {
   const {type, icon, title, children, className} = props;
   return (
     <AdmonitionContainer type={type} className={className}>

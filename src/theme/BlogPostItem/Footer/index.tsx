@@ -1,4 +1,5 @@
-import { useBlogPost, useDateTimeFormat } from '@docusaurus/theme-common/internal'
+import {useBlogPost} from '@docusaurus/plugin-content-blog/client'
+import {useDateTimeFormat} from '@docusaurus/theme-common/internal'
 import { Icon } from '@iconify/react'
 import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink'
 
@@ -8,7 +9,7 @@ import React from "react";
 import Tag from "@theme/Tag";
 import {ReadingTime} from "@site/src/theme/BlogPostItem/Header/Info";
 
-export default function BlogPostItemFooter(): JSX.Element | null {
+export default function BlogPostItemFooter(): React.JSX.Element | null {
   const { metadata, isBlogPostPage } = useBlogPost()
   const { tags, title, editUrl, hasTruncateMarker, date, readingTime, authors } = metadata
 

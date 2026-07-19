@@ -14,7 +14,7 @@ import React from "react";
 import BlogPostGridItems from "@site/src/theme/BlogPostGridItems";
 import {useViewType, ViewType} from "@site/src/hooks/useViewType";
 
-function BlogListPageMetadata(props: Props): JSX.Element {
+function BlogListPageMetadata(props: Props): React.JSX.Element {
   const { metadata } = props
   const { blogDescription } = metadata
 
@@ -32,7 +32,7 @@ function ViewTypeSwitch({
 }: {
   viewType: ViewType
   toggleViewType: (viewType: ViewType) => void
-}): JSX.Element {
+}): React.JSX.Element {
   return (
     <div className="my-4 flex items-center justify-center">
       <Icon
@@ -88,7 +88,7 @@ function BlogListPageContent(props: Props) {
   )
 }
 
-export default function BlogListPage(props: Props): JSX.Element {
+export default function BlogListPage(props: Props): React.JSX.Element {
   return (
     <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogListPage)}>
       <BlogListPageMetadata {...props} />

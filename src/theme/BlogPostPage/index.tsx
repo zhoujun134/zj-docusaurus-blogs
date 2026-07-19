@@ -1,6 +1,6 @@
 import type {BlogSidebar} from '@docusaurus/plugin-content-blog'
 import {HtmlClassNameProvider, ThemeClassNames} from '@docusaurus/theme-common'
-import {BlogPostProvider, useBlogPost} from '@docusaurus/theme-common/internal'
+import {BlogPostProvider, useBlogPost} from '@docusaurus/plugin-content-blog/client'
 import BackToTopButton from '@theme/BackToTopButton'
 import BlogLayout from '@theme/BlogLayout'
 import BlogPostItem from '@theme/BlogPostItem'
@@ -27,7 +27,7 @@ function BlogPostPageContent({
                              }: {
     sidebar: BlogSidebar
     children: ReactNode
-}): JSX.Element {
+}): React.JSX.Element {
     const {pathname} = useLocation();
     const {metadata, toc} = useBlogPost()
     const {siteConfig} = useDocusaurusContext()
@@ -90,7 +90,7 @@ function copyrightVNoticeCardProps(): VNoticeCardProps {
     }
 }
 
-export default function BlogPostPage(props: Props): JSX.Element {
+export default function BlogPostPage(props: Props): React.JSX.Element {
     const BlogPostContent = props.content
     return (
         <BlogPostProvider content={props.content} isBlogPostPage>

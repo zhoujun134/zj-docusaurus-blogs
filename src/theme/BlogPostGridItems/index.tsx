@@ -8,7 +8,7 @@ import { useState } from 'react'
 import styles from './styles.module.css'
 import {cn} from "@site/src/utils/cnUtils";
 
-export default function BlogPostGridItems({ items }: BlogPostItemsProps): JSX.Element {
+export default function BlogPostGridItems({ items }: BlogPostItemsProps): React.JSX.Element {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   const data = items.map(({ content: BlogPostContent }) => {

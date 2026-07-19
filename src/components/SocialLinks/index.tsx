@@ -20,7 +20,7 @@ interface Props {
   href: string
   title: string
   color?: string
-  icon: string | JSX.Element
+  icon: string | React.JSX.Element
   [key: string]: unknown
 }
 

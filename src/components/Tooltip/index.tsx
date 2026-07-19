@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react'
-import ReactDOM from 'react-dom'
-import { usePopper } from 'react-popper'
+import React, {useEffect, useRef, useState} from 'react'
+
 import styles from './styles.module.css'
 
 interface Props {
@@ -11,115 +10,53 @@ interface Props {
   children: React.ReactElement
 }
 
-export default function Tooltip({ children, id, anchorEl, text, delay }: Props): JSX.Element {
+export default function Tooltip({
+  children,
+  id,
+  text,
+  delay = 300,
+}: Props): React.JSX.Element {
   const [open, setOpen] = useState(false)
-  const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null)
-  const [popperElement, setPopperElement] = useState<HTMLElement | null>(null)
-  const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null)
-  const [container, setContainer] = useState<Element | null>(null)
-  const { styles: popperStyles, attributes } = usePopper(referenceElement, popperElement, {
-    modifiers: [
-      {
-        name: 'arrow',
-        options: {
-          element: arrowElement,
-        },
-      },
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 8],
-        },
-      },
-    ],
-  })
-
   const timeout = useRef<number | null>(null)
   const tooltipId = `${id}_tooltip`
 
-  useEffect(() => {
-    if (anchorEl) {
-      if (typeof anchorEl === 'string') {
-        setContainer(document.querySelector(anchorEl))
-      } else {
-        setContainer(anchorEl)
-      }
-    } else {
-      setContainer(document.body)
+  const cancelTimer = () => {
+    if (timeout.current !== null) {
+      window.clearTimeout(timeout.current)
+      timeout.current = null
     }
-  }, [anchorEl])
+  }
 
-  useEffect(() => {
-    const showEvents = ['mouseenter', 'focus']
-    const hideEvents = ['mouseleave', 'blur']
+  const show = () => {
+    if (!text) return
+    cancelTimer()
+    timeout.current = window.setTimeout(() => setOpen(true), delay)
+  }
 
-    const handleOpen = () => {
-      // There is no point in displaying an empty tooltip.
-      if (text === '') {
-        return
-      }
+  const hide = () => {
+    cancelTimer()
+    setOpen(false)
+  }
 
-      // Remove the title ahead of time to avoid displaying
-      // two tooltips at the same time (native + this one).
-      referenceElement?.removeAttribute('title')
-
-      timeout.current = window.setTimeout(() => {
-        setOpen(true)
-      }, delay || 300)
-    }
-
-    const handleClose = () => {
-      clearInterval(timeout.current!)
-      setOpen(false)
-    }
-
-    if (referenceElement) {
-      showEvents.forEach(event => {
-        referenceElement.addEventListener(event, handleOpen)
-      })
-
-      hideEvents.forEach(event => {
-        referenceElement.addEventListener(event, handleClose)
-      })
-    }
-
-    return () => {
-      if (referenceElement) {
-        showEvents.forEach(event => {
-          referenceElement.removeEventListener(event, handleOpen)
-        })
-
-        hideEvents.forEach(event => {
-          referenceElement.removeEventListener(event, handleClose)
-        })
-      }
-    }
-  }, [referenceElement, text, delay])
+  useEffect(() => cancelTimer, [])
 
   return (
-    <>
+    <span
+      className={styles.tooltipTrigger}
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+    >
       {React.cloneElement(children, {
-        ref: setReferenceElement,
         'aria-describedby': open ? tooltipId : undefined,
-      })}
-      {container
-        ? ReactDOM.createPortal(
-            open && (
-              <div
-                id={tooltipId}
-                role="tooltip"
-                ref={setPopperElement}
-                className={styles.tooltip}
-                style={popperStyles.popper}
-                {...attributes.popper}
-              >
-                {text}
-                <span ref={setArrowElement} className={styles.tooltipArrow} style={popperStyles.arrow} />
-              </div>
-            ),
-            container,
-          )
-        : container}
-    </>
+      } as React.HTMLAttributes<HTMLElement>)}
+      {open ? (
+        <span id={tooltipId} role="tooltip" className={styles.tooltip}>
+          {text}
+          <span className={styles.tooltipArrow} />
+        </span>
+      ) : null}
+    </span>
   )
 }

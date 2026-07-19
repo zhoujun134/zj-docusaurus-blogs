@@ -7,7 +7,7 @@ import BlogPostItems from '@theme/BlogPostItems'
 import type { Props } from '@theme/BlogTagsPostsPage'
 import Heading from '@theme/Heading'
 import SearchMetadata from '@theme/SearchMetadata'
-import Unlisted from '@theme/Unlisted'
+import Unlisted from '@theme/ContentVisibility/Unlisted'
 
 import MyLayout from '../MyLayout'
 import {cn} from "@site/src/utils/cnUtils";
@@ -42,7 +42,7 @@ function useBlogTagsPostsPageTitle(tag: Props['tag']): string {
   )
 }
 
-function BlogTagsPostsPageMetadata({ tag }: Props): JSX.Element {
+function BlogTagsPostsPageMetadata({ tag }: Props): React.JSX.Element {
   const title = useBlogTagsPostsPageTitle(tag)
   return (
     <>
@@ -52,7 +52,7 @@ function BlogTagsPostsPageMetadata({ tag }: Props): JSX.Element {
   )
 }
 
-function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props): JSX.Element {
+function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props): React.JSX.Element {
   const title = useBlogTagsPostsPageTitle(tag)
   return (
     <MyLayout>
@@ -71,7 +71,7 @@ function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props):
     </MyLayout>
   )
 }
-export default function BlogTagsPostsPage(props: Props): JSX.Element {
+export default function BlogTagsPostsPage(props: Props): React.JSX.Element {
   return (
     <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagPostListPage)}>
       <BlogTagsPostsPageMetadata {...props} />

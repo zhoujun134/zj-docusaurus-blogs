@@ -96,7 +96,7 @@ function ShowcaseCards() {
   )
 }
 
-function Showcase(): JSX.Element {
+function Showcase(): React.JSX.Element {
   return (
     <MyLayout title={TITLE} description={DESCRIPTION} maxWidth={1280}>
       <main className="margin-vert--lg">

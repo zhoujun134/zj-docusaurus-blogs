@@ -118,7 +118,7 @@ function FriendCards() {
     )
 }
 
-export default function FriendLink(): JSX.Element {
+export default function FriendLink(): React.JSX.Element {
     const ref = React.useRef<HTMLDivElement>(null)
 
     return (

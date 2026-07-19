@@ -8,7 +8,7 @@ function transformImgClassName(className?: string): string {
   return clsx(className, styles.img);
 }
 
-export default function MDXImg(props: Props): JSX.Element {
+export default function MDXImg(props: Props): React.JSX.Element {
   return (
     // eslint-disable-next-line jsx-a11y/alt-text
       <div className={styles.zjImgContainer}>

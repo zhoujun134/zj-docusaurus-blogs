@@ -9,7 +9,7 @@ import { TagsListByFlat } from '../TagsListByLetter'
 import MyLayout from '../MyLayout'
 import {cn} from "@site/src/utils/cnUtils";
 
-export default function BlogTagsListPage({ tags, sidebar }: Props): JSX.Element {
+export default function BlogTagsListPage({ tags, sidebar }: Props): React.JSX.Element {
   const title = translateTagsPageTitle()
 
   const [type, setType] = useState<'list' | 'grid'>('list')

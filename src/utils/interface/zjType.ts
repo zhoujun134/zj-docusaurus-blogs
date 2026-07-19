@@ -38,7 +38,7 @@ export type Friend = {
 
 export interface VNoticeCardProps {
     title: string,
-    description: JSX.Element | string,
+    description: React.JSX.Element | string,
     type: 'tip' | 'danger' | 'note' | 'warning' | 'info',
     icon?: string,
     href?: string,

@@ -1,4 +1,4 @@
-import { BlogPostProvider } from '@docusaurus/theme-common/internal'
+import { BlogPostProvider } from '@docusaurus/plugin-content-blog/client'
 import BlogPostItem from '@theme/BlogPostItem'
 import type { Props } from '@theme/BlogPostItems'
 import { type Variants, motion } from 'framer-motion'
@@ -19,7 +19,7 @@ const variants: Variants = {
   }),
 }
 
-export default function BlogPostItems({ items, component: BlogPostItemComponent = BlogPostItem }: Props): JSX.Element {
+export default function BlogPostItems({ items, component: BlogPostItemComponent = BlogPostItem }: Props): React.JSX.Element {
   return (
     <>
       {items.map(({ content: BlogPostContent }, i) => (

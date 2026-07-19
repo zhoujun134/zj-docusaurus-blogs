@@ -4,7 +4,7 @@ import Layout from '@theme/Layout'
 import type { Props } from '@theme/BlogLayout'
 import {cn} from "@site/src/utils/cnUtils";
 
-export default function BlogLayout(props: Props): JSX.Element {
+export default function BlogLayout(props: Props): React.JSX.Element {
     const { sidebar, toc, children, ...layoutProps } = props
     const hasSidebar = sidebar && sidebar.items.length > 0
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from '@docusaurus/Head';
-import {useBlogPostStructuredData} from '@docusaurus/theme-common';
+import {useBlogPostStructuredData} from '@docusaurus/plugin-content-blog/client';
 
-export default function BlogPostStructuredData(): JSX.Element {
+export default function BlogPostStructuredData(): React.JSX.Element {
   const structuredData = useBlogPostStructuredData();
   return (
     <Head>
