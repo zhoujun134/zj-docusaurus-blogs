@@ -1,7 +1,7 @@
 'use client'
 
 import { useColorMode } from '@docusaurus/theme-common'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useState } from 'react'
 import { Cloud, ICloud, SimpleIcon, fetchSimpleIcons, renderSimpleIcon } from 'react-icon-cloud'
 export const cloudProps: Omit<ICloud, 'children'> = {
   containerProps: {
@@ -58,6 +58,7 @@ type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>
 export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
   const [data, setData] = useState<IconData | null>(null)
   const { colorMode: theme } = useColorMode()
+  const cloudId = useId()
 
   useEffect(() => {
     fetchSimpleIcons({ slugs: iconSlugs }).then(setData)
@@ -70,7 +71,7 @@ export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
   }, [data, theme])
 
   return (
-    <Cloud {...cloudProps}>
+    <Cloud {...cloudProps} id={cloudId}>
       <>{renderedIcons}</>
     </Cloud>
   )

@@ -9,11 +9,11 @@ interface GithubProps {
 }
 
 export default function Github({ className }: GithubProps) {
-  const { isDarkTheme } = useColorMode()
+  const { colorMode } = useColorMode()
 
   const githubStatsUrl = (type: 'overview' | 'languages') =>
     `https://raw.githubusercontent.com/zhoujun134/github-stats/master/generated/${type}.svg#gh-${
-      isDarkTheme ? 'dark' : 'light'
+      colorMode === 'dark' ? 'dark' : 'light'
     }-mode-only`
 
   return (
@@ -30,7 +30,7 @@ export default function Github({ className }: GithubProps) {
         <GitHubCalendar
           username="zhoujun134"
           blockSize={11}
-          colorScheme={isDarkTheme ? 'dark' : 'light'}
+          colorScheme={colorMode === 'dark' ? 'dark' : 'light'}
         />
       </div>
     </div>
