@@ -1,6 +1,7 @@
-import { type TagLetterEntry, listTagsByLetters } from '@docusaurus/theme-common'
+import { type TagLetterEntry } from '@docusaurus/theme-common'
 import Tag from '@theme/Tag'
 import type { Props } from '@theme/TagsListByLetter'
+import { groupTagsDeterministically } from '@site/src/features/tags/groupTags'
 
 import styles from './styles.module.css'
 
@@ -21,7 +22,7 @@ function TagLetterEntryItem({ letterEntry }: { letterEntry: TagLetterEntry }) {
 }
 
 export default function TagsListByLetter({ tags }: Props): React.JSX.Element {
-  const letterList = listTagsByLetters(tags)
+  const letterList = groupTagsDeterministically(tags)
   return (
     <section className="margin-vert--lg">
       {letterList.map((letterEntry) => (

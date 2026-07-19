@@ -10,13 +10,13 @@ function transformImgClassName(className?: string): string {
 
 export default function MDXImg(props: Props): React.JSX.Element {
   return (
-    <div className={styles.zjImgContainer}>
+    <span className={styles.zjImgContainer}>
       <img
         decoding="async"
         loading="lazy"
         {...props}
         className={transformImgClassName(props.className)}
       />
-    </div>
+    </span>
   )
 }

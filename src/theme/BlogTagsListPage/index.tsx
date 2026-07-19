@@ -4,7 +4,6 @@ import {
   ThemeClassNames,
   translateTagsPageTitle,
 } from '@docusaurus/theme-common'
-import { Icon } from '@iconify/react'
 import type { Props } from '@theme/BlogTagsListPage'
 import SearchMetadata from '@theme/SearchMetadata'
 import TagsListByLetter from '@theme/TagsListByLetter'
@@ -13,11 +12,12 @@ import { TagsListByFlat } from '../TagsListByLetter'
 
 import MyLayout from '../MyLayout'
 import { cn } from '@site/src/utils/cnUtils'
+import ViewToggle, { type ViewType } from '@site/src/components/ViewToggle'
 
 export default function BlogTagsListPage({ tags, sidebar: _sidebar }: Props): React.JSX.Element {
   const title = translateTagsPageTitle()
 
-  const [type, setType] = useState<'list' | 'grid'>('list')
+  const [type, setType] = useState<ViewType>('list')
 
   return (
     <HtmlClassNameProvider
@@ -34,22 +34,7 @@ export default function BlogTagsListPage({ tags, sidebar: _sidebar }: Props): Re
           }}
         >
           <h1>{title}</h1>
-          <span className="flex">
-            <Icon
-              icon="ph:list"
-              width="24"
-              height="24"
-              onClick={() => setType('list')}
-              color={type === 'list' ? 'var(--ifm-color-primary)' : '#ccc'}
-            />
-            <Icon
-              icon="ph:grid-four"
-              width="24"
-              height="24"
-              onClick={() => setType('grid')}
-              color={type === 'grid' ? 'var(--ifm-color-primary)' : '#ccc'}
-            />
-          </span>
+          <ViewToggle value={type} onChange={setType} />
         </div>
         {type === 'list' && <TagsListByLetter tags={tags} />}
         {type === 'grid' && <TagsListByFlat tags={tags} />}

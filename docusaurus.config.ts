@@ -42,6 +42,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          exclude: ['superpowers/**'],
         },
         blog: false,
         theme: {
@@ -65,7 +66,7 @@ const config: Config = {
     [
       '@docusaurus/plugin-pwa',
       {
-        debug: process.env.NODE_ENV === 'development',
+        debug: false,
         offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
         pwaHead: [
           { tagName: 'link', rel: 'icon', href: '/img/logo.png' },

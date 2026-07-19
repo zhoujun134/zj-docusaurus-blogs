@@ -1,0 +1,20 @@
+.toggle {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.toggle button {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  color: var(--ifm-color-emphasis-600);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle button[aria-pressed='true'] {
+  color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
