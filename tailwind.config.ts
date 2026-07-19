@@ -1,6 +1,10 @@
 import type {Config} from 'tailwindcss'
-import svgToDataUri from 'mini-svg-data-uri'
 import plugin from 'tailwindcss/plugin'
+
+// Tailwind loads TypeScript configs through a CommonJS transformer. Using a
+// default import here double-wraps this CommonJS module and makes it uncallable.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const svgToDataUri: typeof import('mini-svg-data-uri') = require('mini-svg-data-uri')
 
 const {
     default: flattenColorPalette,
