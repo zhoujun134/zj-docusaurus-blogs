@@ -12,6 +12,10 @@ export default defineConfig({
         __dirname,
         'node_modules/@docusaurus/core/lib/client/exports/BrowserOnly.js',
       ),
+      '@docusaurus/useDocusaurusContext': path.resolve(
+        __dirname,
+        'node_modules/@docusaurus/core/lib/client/exports/useDocusaurusContext.js',
+      ),
     },
   },
   test: {

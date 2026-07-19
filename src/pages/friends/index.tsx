@@ -112,6 +112,7 @@ function FriendCards() {
         </ul>
         <Comments
           articleId={'@site/my-friends/links/apply'}
+          target="friends"
           noticeCardBeforeSumitForm={noticeCardProps}
         />
       </div>
