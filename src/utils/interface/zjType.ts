@@ -2,7 +2,7 @@
 export interface IResult<T> {
     code: string
     message: string
-    data?: T | any
+    data?: T
 }
 
 export interface Page<T> {
@@ -49,8 +49,8 @@ export interface VNoticeCardProps {
 export interface ICommentSubmitRequest {
     articleId?: string,
     articleTitle?: string,
-    parentCommentId?: string,
-    replyCommentId?: string,
+    parentCommentId?: string | null,
+    replyCommentId?: string | null,
     author: string,
     email: string,
     content: string;
