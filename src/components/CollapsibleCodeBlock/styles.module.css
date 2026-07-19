@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+}
+
+.collapsed {
+  max-height: 26rem;
+  overflow: hidden;
+}
+
+.expanded {
+  max-height: none;
+}
+
+.toggle {
+  display: block;
+  width: 100%;
+  padding: 0.35rem 0.75rem;
+  color: var(--ifm-color-primary);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 0;
+  border-radius: 0 0 var(--ifm-code-border-radius) var(--ifm-code-border-radius);
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: var(--ifm-color-emphasis-100);
+}
