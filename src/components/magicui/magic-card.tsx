@@ -1,5 +1,5 @@
-import React, { CSSProperties, ReactElement, ReactNode, useEffect, useRef, useState } from 'react'
-import {cn} from "@site/src/utils/cnUtils";
+import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react'
+import { cn } from '@site/src/utils/cnUtils'
 
 interface MousePosition {
   x: number
@@ -29,7 +29,7 @@ function useMousePosition(): MousePosition {
 
 interface MagicContainerProps {
   children?: ReactNode
-  className?: any
+  className?: string
 }
 
 const MagicContainer = ({ children, className }: MagicContainerProps) => {
@@ -41,7 +41,9 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
 
   useEffect(() => {
     init()
-    containerRef.current && setBoxes(Array.from(containerRef.current.children).map(el => el as HTMLElement))
+    if (containerRef.current) {
+      setBoxes(Array.from(containerRef.current.children).map((el) => el as HTMLElement))
+    }
   }, [])
 
   useEffect(() => {
@@ -74,7 +76,7 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
 
       mouse.current.x = x
       mouse.current.y = y
-      boxes.forEach(box => {
+      boxes.forEach((box) => {
         const boxX = -(box.getBoundingClientRect().left - rect.left) + mouse.current.x
         const boxY = -(box.getBoundingClientRect().top - rect.top) + mouse.current.y
         box.style.setProperty('--mouse-x', `${boxX}px`)
@@ -96,14 +98,7 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
   )
 }
 
-interface MagicCardProps {
-  /**
-   * @default <div />
-   * @type ReactElement
-   * @description
-   * The component to be rendered as the card
-   * */
-  as?: ReactElement
+interface MagicCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * @default ""
    * @type string
@@ -127,6 +122,8 @@ interface MagicCardProps {
    * The size of the spotlight effect in pixels
    * */
   size?: number
+
+  borderColor?: string
 
   /**
    * @default true
@@ -159,8 +156,6 @@ interface MagicCardProps {
    * The background of the card
    * */
   background?: string
-
-  [key: string]: any
 }
 
 const MagicCard: React.FC<MagicCardProps> = ({
@@ -170,6 +165,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
   spotlight = true,
   borderColor = 'var(--content-background)',
   isolated = true,
+  background,
   ...props
 }) => {
   return (
@@ -178,11 +174,14 @@ const MagicCard: React.FC<MagicCardProps> = ({
         {
           '--mask-size': `${size}px`,
           '--border-color': `${borderColor}`,
+          '--card-background': background,
         } as CSSProperties
       }
       className={cn(
         'relative z-0 h-full w-full rounded-2xl',
-        'bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]',
+        spotlight &&
+          'bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]',
+        isolated && 'isolate',
         className,
       )}
       {...props}

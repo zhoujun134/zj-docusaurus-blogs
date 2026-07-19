@@ -4,8 +4,8 @@
 
 .admonitionHeading {
   /*修改了 --ifm-h5-font-size -> --ifm-h3-font-size*/
-  font: var(--ifm-heading-font-weight) var(--ifm-h3-font-size) /
-    var(--ifm-heading-line-height) var(--ifm-heading-font-family);
+  font: var(--ifm-heading-font-weight) var(--ifm-h3-font-size) / var(--ifm-heading-line-height)
+    var(--ifm-heading-font-family);
   text-transform: uppercase;
 }
 
@@ -40,7 +40,7 @@
   margin-bottom: 5px;
 }
 
-.admonitionContent  > p > a{
+.admonitionContent > p > a {
   text-decoration: none;
   color: var(--ifm-color-primary);
 }

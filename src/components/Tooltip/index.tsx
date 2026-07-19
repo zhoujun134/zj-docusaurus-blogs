@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import styles from './styles.module.css'
 
@@ -10,12 +10,7 @@ interface Props {
   children: React.ReactElement
 }
 
-export default function Tooltip({
-  children,
-  id,
-  text,
-  delay = 300,
-}: Props): React.JSX.Element {
+export default function Tooltip({ children, id, text, delay = 300 }: Props): React.JSX.Element {
   const [open, setOpen] = useState(false)
   const timeout = useRef<number | null>(null)
   const tooltipId = `${id}_tooltip`

@@ -7,10 +7,10 @@ import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment'
 import { MagicContainer } from '@site/src/components/magicui/magic-card'
 import MyLayout from '@site/src/theme/MyLayout'
 import styles from './styles.module.css'
-import {cn} from "@site/src/utils/cnUtils";
-import React from "react";
-import ShowcaseCard from "@site/src/pages/project/_components/ShowcaseCard";
-import {upperFirst} from "@site/src/utils/jsUtils";
+import { cn } from '@site/src/utils/cnUtils'
+import React from 'react'
+import ShowcaseCard from '@site/src/pages/project/_components/ShowcaseCard'
+import { upperFirst } from '@site/src/utils/jsUtils'
 
 const TITLE = translate({
   id: 'theme.project.title',
@@ -82,7 +82,7 @@ function ShowcaseCards() {
                   <h3>{upperFirst(lang === 'en' ? key : projectTypeMap[key])}</h3>
                 </div>
                 <MagicContainer className={styles.showcaseList}>
-                  {value.map(project => (
+                  {value.map((project) => (
                     <ShowcaseCard key={project.title} project={project} />
                   ))}
                 </MagicContainer>

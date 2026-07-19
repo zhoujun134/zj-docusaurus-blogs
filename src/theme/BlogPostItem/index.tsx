@@ -4,7 +4,7 @@ import BlogPostItemContainer from '@theme/BlogPostItem/Container'
 import BlogPostItemContent from '@theme/BlogPostItem/Content'
 import BlogPostItemFooter from '@theme/BlogPostItem/Footer'
 import BlogPostItemHeader from '@theme/BlogPostItem/Header'
-import {cn} from "@site/src/utils/cnUtils";
+import { cn } from '@site/src/utils/cnUtils'
 
 // apply a bottom margin in list view
 function useContainerClassName() {

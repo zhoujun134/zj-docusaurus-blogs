@@ -7,8 +7,8 @@ import FavoriteIcon from '@site/src/components/svgIcons/FavoriteIcon'
 import Image from '@theme/IdealImage'
 import React, { memo } from 'react'
 import styles from './styles.module.css'
-import {cn} from "@site/src/utils/cnUtils";
-import {sortBy} from "@site/src/utils/jsUtils";
+import { cn } from '@site/src/utils/cnUtils'
+import { sortBy } from '@site/src/utils/jsUtils'
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(({ label, color, description }, ref) => (
   <li ref={ref} className={styles.tag} title={description}>
@@ -18,10 +18,10 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(({ label, color, descriptio
 ))
 
 function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
-  const tagObjects = tags.map(tag => ({ tag, ...Tags[tag] }))
+  const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }))
 
   // Keep same order for all tags
-  const tagObjectsSorted = sortBy(tagObjects, tagObject => TagList.indexOf(tagObject.tag))
+  const tagObjectsSorted = sortBy(tagObjects, (tagObject) => TagList.indexOf(tagObject.tag))
 
   return (
     <>
@@ -51,7 +51,9 @@ const ShowcaseCard = memo(({ project }: { project: Project }) => {
           <h4 className={styles.showcaseCardTitle}>
             <Link href={project.website}>{project.title}</Link>
           </h4>
-          {project.tags.includes('favorite') && <FavoriteIcon svgClass={cn(styles.svgIconFavorite, styles.svgIcon)} size="small" />}
+          {project.tags.includes('favorite') && (
+            <FavoriteIcon svgClass={cn(styles.svgIconFavorite, styles.svgIcon)} size="small" />
+          )}
           {project.source && (
             <Link
               href={project.source}

@@ -35,11 +35,8 @@
 
 .showcaseCardTitle a {
   @apply no-underline;
-  background: linear-gradient(
-      var(--ifm-color-primary),
-      var(--ifm-color-primary)
-    )
-    no-repeat right bottom;
+  background: linear-gradient(var(--ifm-color-primary), var(--ifm-color-primary)) no-repeat right
+    bottom;
   background-size: 0px 2px;
   transition: background-size 300ms;
 }

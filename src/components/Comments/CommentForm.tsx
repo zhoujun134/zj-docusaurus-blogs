@@ -1,7 +1,7 @@
 import React from 'react'
 
 import NoticeCard from '@site/src/components/NoticeCard'
-import type {VNoticeCardProps} from '@site/src/utils/interface/zjType'
+import type { VNoticeCardProps } from '@site/src/utils/interface/zjType'
 
 import styles from './Comments.module.css'
 
@@ -46,7 +46,7 @@ export default function CommentForm({
             aria-label="用户名"
             type="text"
             value={draft.author}
-            onChange={event => onChange({...draft, author: event.target.value})}
+            onChange={(event) => onChange({ ...draft, author: event.target.value })}
             placeholder="输入你的用户名"
             className={styles.inputFieldLeft}
             required
@@ -55,7 +55,7 @@ export default function CommentForm({
             aria-label="邮箱"
             type="email"
             value={draft.email}
-            onChange={event => onChange({...draft, email: event.target.value})}
+            onChange={(event) => onChange({ ...draft, email: event.target.value })}
             placeholder="输入你的邮箱"
             className={styles.inputFieldRight}
             required
@@ -65,7 +65,7 @@ export default function CommentForm({
           <textarea
             aria-label="评论内容"
             value={draft.content}
-            onChange={event => onChange({...draft, content: event.target.value})}
+            onChange={(event) => onChange({ ...draft, content: event.target.value })}
             placeholder="写下你的评论..."
             className={styles.commentInput}
             rows={5}
@@ -73,11 +73,7 @@ export default function CommentForm({
           />
         </div>
         <div className={styles.inputGroup}>
-          <button
-            type="submit"
-            className={styles.commentButton}
-            disabled={submitting}
-          >
+          <button type="submit" className={styles.commentButton} disabled={submitting}>
             {submitting ? '提交中…' : '提交评论'}
           </button>
         </div>

@@ -9,7 +9,7 @@ function TagLetterEntryItem({ letterEntry }: { letterEntry: TagLetterEntry }) {
     <article>
       <h2>{letterEntry.letter}</h2>
       <ul className="padding--none mb-4">
-        {letterEntry.tags.map(tag => (
+        {letterEntry.tags.map((tag) => (
           <li key={tag.permalink} className={styles.tag}>
             <Tag {...tag} />
           </li>
@@ -24,7 +24,7 @@ export default function TagsListByLetter({ tags }: Props): React.JSX.Element {
   const letterList = listTagsByLetters(tags)
   return (
     <section className="margin-vert--lg">
-      {letterList.map(letterEntry => (
+      {letterList.map((letterEntry) => (
         <TagLetterEntryItem key={letterEntry.letter} letterEntry={letterEntry} />
       ))}
     </section>
@@ -35,7 +35,7 @@ export function TagsListByFlat({ tags }: Props): React.JSX.Element {
   return (
     <section className="margin-vert--lg">
       <ul className="padding--none">
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <li key={tag.permalink} className={styles.tag}>
             <Tag {...tag} />
           </li>

@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
 import styles from './styles.module.css'
-import {cn} from "@site/src/utils/cnUtils";
+import { cn } from '@site/src/utils/cnUtils'
 
 export default function BlogPostGridItems({ items }: BlogPostItemsProps): React.JSX.Element {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -58,10 +58,15 @@ export default function BlogPostGridItems({ items }: BlogPostItemsProps): React.
             </AnimatePresence>
 
             <Card className={cn('relative bg-blog', item.sticky && styles.blogSticky)}>
-              <CardTitle className="transition duration-300 hover:text-primary">{item.title}</CardTitle>
+              <CardTitle className="transition duration-300 hover:text-primary">
+                {item.title}
+              </CardTitle>
               <CardFooter className="flex justify-between pt-4">
                 <div
-                  className={cn(styles.blogTags, 'inline-flex items-center gap-1 whitespace-nowrap text-sm text-text')}
+                  className={cn(
+                    styles.blogTags,
+                    'inline-flex items-center gap-1 whitespace-nowrap text-sm text-text',
+                  )}
                 >
                   {item.tags?.length > 0 && (
                     <>
@@ -72,18 +77,20 @@ export default function BlogPostGridItems({ items }: BlogPostItemsProps): React.
                           d="M10 15h4V9h-4v6Zm0 2v3a1 1 0 0 1-2 0v-3H5a1 1 0 0 1 0-2h3V9H5a1 1 0 1 1 0-2h3V4a1 1 0 1 1 2 0v3h4V4a1 1 0 0 1 2 0v3h3a1 1 0 0 1 0 2h-3v6h3a1 1 0 0 1 0 2h-3v3a1 1 0 0 1-2 0v-3h-4Z"
                         />
                       </svg>
-                      {item.tags.slice(0, 2).map(({ label, permalink: tagPermalink, description }, index) => (
-                        <>
-                          {index !== 0 && '/'}
-                          <Tag
-                            label={label}
-                            description={description}
-                            permalink={tagPermalink}
-                            key={tagPermalink}
-                            className="tag"
-                          />
-                        </>
-                      ))}
+                      {item.tags
+                        .slice(0, 2)
+                        .map(({ label, permalink: tagPermalink, description }, index) => (
+                          <>
+                            {index !== 0 && '/'}
+                            <Tag
+                              label={label}
+                              description={description}
+                              permalink={tagPermalink}
+                              key={tagPermalink}
+                              className="tag"
+                            />
+                          </>
+                        ))}
                     </>
                   )}
                 </div>

@@ -2,7 +2,7 @@ import WebDeveloperSvg from '@site/static/svg/undraw_web_developer.svg'
 import OpenSourceSvg from '@site/static/svg/undraw_open_source.svg'
 import SpiderSvg from '@site/static/svg/undraw_spider.svg'
 import Translate, { translate } from '@docusaurus/Translate'
-import React from "react";
+import React from 'react'
 
 export type FeatureItem = {
   title: string
@@ -19,7 +19,8 @@ const FEATURES: FeatureItem[] = [
     text: (
       <Translate>
         作为一名后端开发工程师，不断学习后端的路上，总归是需要总结和归档自己的成长之路的，断断续续，一直没有一个好的博客网站，所以在折腾后端的学习上也在不断补齐自己对于前端知识的一些学习，
-        前端目前初步算是入门了 vue3，TypeScript 的一些基本操作。在日常的开发中，秉着能用 TS 绝不用 JS 的原则，为项目提供类型安全的保障，提高代码质量和开发效率。
+        前端目前初步算是入门了 vue3，TypeScript 的一些基本操作。在日常的开发中，秉着能用 TS 绝不用
+        JS 的原则，为项目提供类型安全的保障，提高代码质量和开发效率。
       </Translate>
     ),
     Svg: WebDeveloperSvg,

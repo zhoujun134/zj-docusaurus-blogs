@@ -1,0 +1,8 @@
+build
+.docusaurus
+node_modules
+docs
+blog
+static
+README.md
+docs/superpowers

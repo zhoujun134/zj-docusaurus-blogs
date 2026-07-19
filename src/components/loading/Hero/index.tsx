@@ -6,10 +6,10 @@ import HeroSvg from './img/hero.svg'
 
 import SocialLinks from '@site/src/components/SocialLinks'
 import styles from './styles.module.css'
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 
 const variants: Variants = {
-  visible: i => ({
+  visible: (i) => ({
     opacity: 1,
     y: 0,
     transition: {
@@ -28,7 +28,7 @@ function Circle() {
 }
 
 function Name() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext()
   return (
     <motion.div
       className={styles.hero_text}
@@ -36,7 +36,7 @@ function Name() {
       initial="hidden"
       animate="visible"
       variants={variants}
-      onMouseMove={e => {
+      onMouseMove={(e) => {
         e.currentTarget.style.setProperty('--x', `${e.clientX}px`)
         e.currentTarget.style.setProperty('--y', `${e.clientY}px`)
       }}
@@ -44,7 +44,7 @@ function Name() {
       <Translate id="homepage.hero.greet">您好! 我是</Translate>
       <span
         className={styles.name}
-        onMouseMove={e => {
+        onMouseMove={(e) => {
           const bounding = e.currentTarget.getBoundingClientRect()
           e.currentTarget.style.setProperty('--mouse-x', `${bounding.x}px`)
           e.currentTarget.style.setProperty('--mouse-y', `${bounding.y}px`)
@@ -62,7 +62,13 @@ export default function Hero() {
     <motion.div className={styles.hero}>
       <div className={styles.intro}>
         <Name />
-        <motion.p custom={2} initial="hidden" animate="visible" variants={variants} className="max-md:px-4">
+        <motion.p
+          custom={2}
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          className="max-md:px-4"
+        >
           <Translate id="homepage.hero.text">
             在这里我会分享各类技术栈所遇到问题与解决方案，带你了解最新的技术栈以及实际开发中如何应用，并希望我的开发经历对你有所启发。
           </Translate>
@@ -71,7 +77,13 @@ export default function Hero() {
           <SocialLinks />
         </motion.div>
 
-        <motion.div className="mt-4 flex gap-2" custom={4} initial="hidden" animate="visible" variants={variants}>
+        <motion.div
+          className="mt-4 flex gap-2"
+          custom={4}
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+        >
           <div className="relative w-max overflow-hidden rounded-2xl p-0.5">
             <div className={styles.gradient} />
             <a

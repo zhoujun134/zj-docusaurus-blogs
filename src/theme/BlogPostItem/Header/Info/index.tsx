@@ -1,13 +1,13 @@
 import { translate } from '@docusaurus/Translate'
 import { usePluralForm } from '@docusaurus/theme-common'
-import {useBlogPost} from '@docusaurus/plugin-content-blog/client'
-import {useDateTimeFormat} from '@docusaurus/theme-common/internal'
+import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
+import { useDateTimeFormat } from '@docusaurus/theme-common/internal'
 import type { Props } from '@theme/BlogPostItem/Header/Info'
 
 import { Icon } from '@iconify/react'
-import {cn} from "@site/src/utils/cnUtils";
-import React from "react";
-import Tag from "@theme/Tag";
+import { cn } from '@site/src/utils/cnUtils'
+import React from 'react'
+import Tag from '@theme/Tag'
 import styles from './styles.module.css'
 
 // Very simple pluralization: probably good enough for now
@@ -59,8 +59,14 @@ export default function BlogPostItemHeaderInfo({ className }: Props): React.JSX.
   const formatDate = (blogDate: string) => dateTimeFormat.format(new Date(blogDate))
 
   return (
-    <div className={cn('inline-flex flex-wrap gap-1.5 text-base',
-        'margin-bottom--md', className, styles.zjButton)}>
+    <div
+      className={cn(
+        'inline-flex flex-wrap gap-1.5 text-base',
+        'margin-bottom--md',
+        className,
+        styles.zjButton,
+      )}
+    >
       <div className="inline-flex items-center gap-1">
         <Icon icon="ri:calendar-line" />
         <DateTime date={date} formattedDate={formatDate(date)} />
@@ -71,13 +77,12 @@ export default function BlogPostItemHeaderInfo({ className }: Props): React.JSX.
           <div className={cn('truncate', 'inline-flex text-center')}>
             {tags.slice(0, 3).map(({ label, permalink: tagPermalink, description }, index) => {
               return (
-                <div key={tagPermalink} className={
-                  'tag !border-0 px-0.5 py-0.5 text-text hover:text-link'}>
+                <div
+                  key={tagPermalink}
+                  className={'tag !border-0 px-0.5 py-0.5 text-text hover:text-link'}
+                >
                   {index !== 0 && '/'}
-                  <Tag
-                    label={label}
-                    permalink={tagPermalink}
-                    description={description}/>
+                  <Tag label={label} permalink={tagPermalink} description={description} />
                 </div>
               )
             })}

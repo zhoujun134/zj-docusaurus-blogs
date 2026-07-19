@@ -1,18 +1,14 @@
 ---
 slug: kuai-pao-xiao-huo-che---dan-sheng-la
 title: 快跑小火车--诞生啦
-authors:
-  name: zhoujun134
-  title: 不要等! 不管想做什么, 都要立刻动起来。
-  url: https://github.com/zhoujun134
-  image_url: https://img.zbus.top/zbus/logo.jpg
+authors: [zhoujun134]
 tags: [博客, 博客构建, 随笔]
 image: https://img.zbus.top/zbus/blog202403150754487.webp
 ---
  
  作者介绍自己是Z不殊，来自中国，坐标北京，老家四川，是一名编程爱好者，希望为开源社区做出贡献。作者喜欢学习，希望在有限的时间内学到无限的可能，目前主攻后端开发，特别是Java，并将长期发展下去。作者也喜欢分享自己的学习过程和经验，希望能够帮助他人。同时，作者也介绍了自己的博客站点，希望在这里记录自己的学习和生活，督促自己的成长。 
 <!-- truncate -->  
- ![111](https://zbus.top/log.png)
+ ![Z 不殊](https://zbus.top/logo.png)
 
 ## 👋 你好! 我是Z不殊
 
@@ -46,7 +42,7 @@ Z不殊，就是不服，不输，不走殊途。
 
 不想再做过多的折腾，从今天开始，好好输出自己的博客，无论是技术，还是生活。
 
-zbus 最初构建于 docusaurus ，并在 docusaurus 上遇到了很多有趣的朋友，有时候博客的存在只是为了记录，写博客，可以让自己梳理清自己想要表达什么，记录日常的所想，日常的知识盲区。本站点构建于 Halo 博客，主要用于日常的笔记和相关吐糟，有任何问题欢迎留言。
+zbus 构建于 Docusaurus，并在使用 Docusaurus 的过程中遇到了很多有趣的朋友。有时候博客的存在只是为了记录，写博客可以帮助自己梳理想要表达的内容，记录日常想法和知识盲区。有任何问题欢迎留言。
 
 希望在这个站点，能够存在长一点。
 

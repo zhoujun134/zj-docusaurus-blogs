@@ -1,4 +1,9 @@
-import { HtmlClassNameProvider, PageMetadata, ThemeClassNames, translateTagsPageTitle } from '@docusaurus/theme-common'
+import {
+  HtmlClassNameProvider,
+  PageMetadata,
+  ThemeClassNames,
+  translateTagsPageTitle,
+} from '@docusaurus/theme-common'
 import { Icon } from '@iconify/react'
 import type { Props } from '@theme/BlogTagsListPage'
 import SearchMetadata from '@theme/SearchMetadata'
@@ -7,15 +12,17 @@ import { useState } from 'react'
 import { TagsListByFlat } from '../TagsListByLetter'
 
 import MyLayout from '../MyLayout'
-import {cn} from "@site/src/utils/cnUtils";
+import { cn } from '@site/src/utils/cnUtils'
 
-export default function BlogTagsListPage({ tags, sidebar }: Props): React.JSX.Element {
+export default function BlogTagsListPage({ tags, sidebar: _sidebar }: Props): React.JSX.Element {
   const title = translateTagsPageTitle()
 
   const [type, setType] = useState<'list' | 'grid'>('list')
 
   return (
-    <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagsListPage)}>
+    <HtmlClassNameProvider
+      className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagsListPage)}
+    >
       <PageMetadata title={title} />
       <SearchMetadata tag="blog_tags_list" />
       <MyLayout>

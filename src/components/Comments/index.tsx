@@ -1,15 +1,15 @@
 import BrowserOnly from '@docusaurus/BrowserOnly'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 import NoticeCard from '@site/src/components/NoticeCard'
-import {getCommentListByArticleId, submitComment} from '@site/src/utils/articleApi'
+import { getCommentListByArticleId, submitComment } from '@site/src/utils/articleApi'
 import type {
   ICommentInfo,
   ICommentSubmitRequest,
   VNoticeCardProps,
 } from '@site/src/utils/interface/zjType'
 
-import CommentForm, {type CommentDraft} from './CommentForm'
+import CommentForm, { type CommentDraft } from './CommentForm'
 import CommentList from './CommentList'
 import styles from './Comments.module.css'
 
@@ -19,7 +19,7 @@ interface CommentsProps {
   noticeCardBeforeSumitForm?: VNoticeCardProps
 }
 
-const EMPTY_DRAFT: CommentDraft = {author: '', email: '', content: ''}
+const EMPTY_DRAFT: CommentDraft = { author: '', email: '', content: '' }
 
 export default function Comments({
   articleId,
@@ -90,14 +90,12 @@ export default function Comments({
   const handleReply = (comment: ICommentInfo, rootCommentId?: string) => {
     setParentCommentId(rootCommentId ?? comment.commentId ?? null)
     setReplyingCommentId(comment.commentId ?? null)
-    setDraft(current => ({
+    setDraft((current) => ({
       ...current,
       content: `${current.author} 回复 ${comment.author}: `,
     }))
     setCommentTitle(`# 回复 ${comment.author} 的评论`)
-    document
-      .getElementById('submitCommentForm')
-      ?.scrollIntoView({behavior: 'smooth'})
+    document.getElementById('submitCommentForm')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const noticeCard: VNoticeCardProps = {

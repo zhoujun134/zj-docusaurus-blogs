@@ -1,11 +1,11 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
-import React from "react";
-import Hero from "@site/src/components/loading/Hero";
-import BlogSection from "@site/src/components/loading/BlogSection";
-import ProjectSection from "@site/src/components/loading/ProjectSection";
-import FeaturesSection from "@site/src/components/loading/FeaturesSection";
-import Particles from "@site/src/components/magicui/particles";
+import React from 'react'
+import Hero from '@site/src/components/loading/Hero'
+import BlogSection from '@site/src/components/loading/BlogSection'
+import ProjectSection from '@site/src/components/loading/ProjectSection'
+import FeaturesSection from '@site/src/components/loading/FeaturesSection'
+import Particles from '@site/src/components/magicui/particles'
 
 export default function Home() {
   const {
@@ -17,7 +17,13 @@ export default function Home() {
     <Layout title={tagline} description={description}>
       <main>
         <Hero />
-        <Particles className="absolute inset-0" quantity={100} ease={80} color={'#ffffff'} refresh />
+        <Particles
+          className="absolute inset-0"
+          quantity={100}
+          ease={80}
+          color={'#ffffff'}
+          refresh
+        />
 
         <div className="relative">
           <div className="mx-auto max-w-7xl bg-background lg:px-8">

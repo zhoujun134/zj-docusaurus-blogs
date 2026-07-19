@@ -1,11 +1,11 @@
-import {describe, expect, it} from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import {normalizeFriends} from './normalizeFriends'
+import { normalizeFriends } from './normalizeFriends'
 
 describe('normalizeFriends', () => {
   it('returns empty groups for missing or failed responses', () => {
-    expect(normalizeFriends(undefined)).toEqual({friends: [], tools: []})
-    expect(normalizeFriends({code: '500', message: 'failed'})).toEqual({
+    expect(normalizeFriends(undefined)).toEqual({ friends: [], tools: [] })
+    expect(normalizeFriends({ code: '500', message: 'failed' })).toEqual({
       friends: [],
       tools: [],
     })

@@ -1,6 +1,11 @@
 import Link from '@docusaurus/Link'
 import Translate, { translate } from '@docusaurus/Translate'
-import { HtmlClassNameProvider, PageMetadata, ThemeClassNames, usePluralForm } from '@docusaurus/theme-common'
+import {
+  HtmlClassNameProvider,
+  PageMetadata,
+  ThemeClassNames,
+  usePluralForm,
+} from '@docusaurus/theme-common'
 import BackToTopButton from '@theme/BackToTopButton'
 import BlogListPaginator from '@theme/BlogListPaginator'
 import BlogPostItems from '@theme/BlogPostItems'
@@ -10,7 +15,7 @@ import SearchMetadata from '@theme/SearchMetadata'
 import Unlisted from '@theme/ContentVisibility/Unlisted'
 
 import MyLayout from '../MyLayout'
-import {cn} from "@site/src/utils/cnUtils";
+import { cn } from '@site/src/utils/cnUtils'
 
 // Very simple pluralization: probably good enough for now
 function useBlogPostsPlural() {
@@ -52,7 +57,12 @@ function BlogTagsPostsPageMetadata({ tag }: Props): React.JSX.Element {
   )
 }
 
-function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props): React.JSX.Element {
+function BlogTagsPostsPageContent({
+  tag,
+  items,
+  sidebar: _sidebar,
+  listMetadata,
+}: Props): React.JSX.Element {
   const title = useBlogTagsPostsPageTitle(tag)
   return (
     <MyLayout>
@@ -60,7 +70,10 @@ function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props):
       <header className={cn('mb-4')}>
         <Heading as="h1">{title}</Heading>
         <Link href={tag.allTagsPath}>
-          <Translate id="theme.tags.tagsPageLink" description="The label of the link targeting the tag list page">
+          <Translate
+            id="theme.tags.tagsPageLink"
+            description="The label of the link targeting the tag list page"
+          >
             View All Tags
           </Translate>
         </Link>
@@ -73,7 +86,9 @@ function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props):
 }
 export default function BlogTagsPostsPage(props: Props): React.JSX.Element {
   return (
-    <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagPostListPage)}>
+    <HtmlClassNameProvider
+      className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagPostListPage)}
+    >
       <BlogTagsPostsPageMetadata {...props} />
       <BlogTagsPostsPageContent {...props} />
     </HtmlClassNameProvider>

@@ -1,6 +1,6 @@
-import {describe, expect, it} from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import {createRequestState} from './requestState'
+import { createRequestState } from './requestState'
 
 describe('createRequestState', () => {
   it('never decrements below zero', () => {

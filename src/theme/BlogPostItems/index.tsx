@@ -5,7 +5,7 @@ import { type Variants, motion } from 'framer-motion'
 
 const variants: Variants = {
   from: { opacity: 0.001, y: 100 },
-  to: i => ({
+  to: (i) => ({
     opacity: 1,
     y: 0,
     transition: {
@@ -19,12 +19,21 @@ const variants: Variants = {
   }),
 }
 
-export default function BlogPostItems({ items, component: BlogPostItemComponent = BlogPostItem }: Props): React.JSX.Element {
+export default function BlogPostItems({
+  items,
+  component: BlogPostItemComponent = BlogPostItem,
+}: Props): React.JSX.Element {
   return (
     <>
       {items.map(({ content: BlogPostContent }, i) => (
         <BlogPostProvider key={BlogPostContent.metadata.permalink} content={BlogPostContent}>
-          <motion.div initial="from" animate="to" custom={i} viewport={{ once: true, amount: 0.8 }} variants={variants}>
+          <motion.div
+            initial="from"
+            animate="to"
+            custom={i}
+            viewport={{ once: true, amount: 0.8 }}
+            variants={variants}
+          >
             <BlogPostItemComponent>
               <BlogPostContent />
             </BlogPostItemComponent>

@@ -1,7 +1,7 @@
 import React from 'react'
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {describe, expect, it} from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import CollapsibleCodeBlock from './index'
 
@@ -14,13 +14,13 @@ describe('CollapsibleCodeBlock', () => {
       </CollapsibleCodeBlock>,
     )
 
-    const button = screen.getByRole('button', {name: '展开代码'})
+    const button = screen.getByRole('button', { name: '展开代码' })
     expect(button).toHaveAttribute('aria-expanded', 'false')
     expect(screen.getByTestId('collapsible-code-content')).toHaveTextContent('long code')
 
     await user.click(button)
 
-    expect(screen.getByRole('button', {name: '折叠代码'})).toHaveAttribute(
+    expect(screen.getByRole('button', { name: '折叠代码' })).toHaveAttribute(
       'aria-expanded',
       'true',
     )

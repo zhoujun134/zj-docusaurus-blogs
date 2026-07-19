@@ -1,13 +1,13 @@
 import React from 'react'
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {beforeEach, describe, expect, it, vi} from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import {getCommentListByArticleId, submitComment} from '@site/src/utils/articleApi'
+import { getCommentListByArticleId, submitComment } from '@site/src/utils/articleApi'
 import Comments from './index'
 
 vi.mock('@docusaurus/BrowserOnly', () => ({
-  default: ({children}: {children: () => React.ReactNode}) => children(),
+  default: ({ children }: { children: () => React.ReactNode }) => children(),
 }))
 
 vi.mock('@site/src/components/NoticeCard', () => ({
@@ -41,7 +41,7 @@ describe('Comments', () => {
     await user.type(screen.getByLabelText('用户名'), 'Z')
     await user.type(screen.getByLabelText('邮箱'), 'z@example.com')
     await user.type(screen.getByLabelText('评论内容'), 'hello')
-    await user.click(screen.getByRole('button', {name: '提交评论'}))
+    await user.click(screen.getByRole('button', { name: '提交评论' }))
 
     expect(await screen.findByRole('alert')).toHaveTextContent('提交失败')
     expect(screen.getByLabelText('评论内容')).toHaveValue('hello')
@@ -55,8 +55,8 @@ describe('Comments', () => {
     await user.type(screen.getByLabelText('用户名'), 'Z')
     await user.type(screen.getByLabelText('邮箱'), 'z@example.com')
     await user.type(screen.getByLabelText('评论内容'), 'hello')
-    await user.click(screen.getByRole('button', {name: '提交评论'}))
+    await user.click(screen.getByRole('button', { name: '提交评论' }))
 
-    expect(screen.getByRole('button', {name: '提交中…'})).toBeDisabled()
+    expect(screen.getByRole('button', { name: '提交中…' })).toBeDisabled()
   })
 })

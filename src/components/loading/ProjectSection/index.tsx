@@ -1,21 +1,26 @@
 import Translate from '@docusaurus/Translate'
 import { type Project, projects } from '@site/data/projects'
 import Marquee from '@site/src/components/magicui/marquee'
-import {Section} from "@site/src/components/loading/Section";
+import { Section } from '@site/src/components/loading/Section'
 
 const removeHttp = (url: string) => {
   return url.replace(/(^\w+:|^)\/\//, '')
 }
 
-const showProjects = projects.filter(i => i.preview)
+const showProjects = projects.filter((i) => i.preview)
 
 const Slider = ({ items }: { items: Project[] }) => {
   return (
     <div className="relative flex min-h-[260px] items-center overflow-hidden">
       <Marquee pauseOnHover gradient className="[--duration:60s]">
-        {items.map(item => (
+        {items.map((item) => (
           <div className="mx-2 h-full w-48 md:w-96" key={item.title}>
-            <a className="flex flex-col hover:no-underline" href={item.website} target="_blank" rel="noreferrer">
+            <a
+              className="flex flex-col hover:no-underline"
+              href={item.website}
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 src={item.preview}
                 alt={item.title}

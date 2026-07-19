@@ -4,7 +4,7 @@ import type { Props } from '@theme/BlogPostItem/Header/Title'
 import React from 'react'
 
 import styles from './styles.module.css'
-import {cn} from "@site/src/utils/cnUtils";
+import { cn } from '@site/src/utils/cnUtils'
 
 export default function BlogPostItemHeaderTitle({ className }: Props): React.JSX.Element {
   const { metadata, isBlogPostPage } = useBlogPost()

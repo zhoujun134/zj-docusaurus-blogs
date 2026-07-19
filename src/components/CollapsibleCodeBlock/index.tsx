@@ -1,12 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 import styles from './styles.module.css'
 
-export default function CollapsibleCodeBlock({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function CollapsibleCodeBlock({ children }: { children: React.ReactNode }) {
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -21,7 +17,7 @@ export default function CollapsibleCodeBlock({
         type="button"
         className={styles.toggle}
         aria-expanded={expanded}
-        onClick={() => setExpanded(value => !value)}
+        onClick={() => setExpanded((value) => !value)}
       >
         {expanded ? '折叠代码' : '展开代码'}
       </button>

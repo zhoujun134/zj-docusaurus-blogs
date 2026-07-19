@@ -1,14 +1,14 @@
-import {cn} from "@site/src/utils/cnUtils";
-import React from "react";
+import { cn } from '@site/src/utils/cnUtils'
+import React from 'react'
 
-interface MarqueeProps {
+interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   reverse?: boolean
   pauseOnHover?: boolean
   children?: React.ReactNode
   vertical?: boolean
   repeat?: number
-  [key: string]: any
+  gradient?: boolean
 }
 
 export default function Marquee({
@@ -18,6 +18,7 @@ export default function Marquee({
   children,
   vertical = false,
   repeat = 4,
+  gradient: _gradient = false,
   ...props
 }: MarqueeProps) {
   return (

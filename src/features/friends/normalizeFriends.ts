@@ -1,4 +1,4 @@
-import type {Friend, IFriendInfo, IResult} from '@site/src/utils/interface/zjType'
+import type { Friend, IFriendInfo, IResult } from '@site/src/utils/interface/zjType'
 
 type FriendGroups = Record<string, IFriendInfo[]>
 
@@ -16,7 +16,7 @@ export function normalizeFriends(response?: IResult<FriendGroups>): {
   tools: Friend[]
 } {
   if (response?.code !== '0' || !response.data) {
-    return {friends: [], tools: []}
+    return { friends: [], tools: [] }
   }
 
   return {

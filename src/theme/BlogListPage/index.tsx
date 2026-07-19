@@ -9,10 +9,10 @@ import Translate from '@docusaurus/Translate'
 import { Icon } from '@iconify/react'
 
 import MyLayout from '../MyLayout'
-import {cn} from "@site/src/utils/cnUtils";
-import React from "react";
-import BlogPostGridItems from "@site/src/theme/BlogPostGridItems";
-import {useViewType, ViewType} from "@site/src/hooks/useViewType";
+import { cn } from '@site/src/utils/cnUtils'
+import React from 'react'
+import BlogPostGridItems from '@site/src/theme/BlogPostGridItems'
+import { useViewType, ViewType } from '@site/src/hooks/useViewType'
 
 function BlogListPageMetadata(props: Props): React.JSX.Element {
   const { metadata } = props
@@ -90,7 +90,9 @@ function BlogListPageContent(props: Props) {
 
 export default function BlogListPage(props: Props): React.JSX.Element {
   return (
-    <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogListPage)}>
+    <HtmlClassNameProvider
+      className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogListPage)}
+    >
       <BlogListPageMetadata {...props} />
       <BlogListPageContent {...props} />
     </HtmlClassNameProvider>

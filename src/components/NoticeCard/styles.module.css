@@ -1,10 +1,8 @@
 .noticeCardContainer {
-    margin-top: 20px;
-    margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .noticeCardContainer p {
-    text-indent: 2em;
+  text-indent: 2em;
 }
-
-

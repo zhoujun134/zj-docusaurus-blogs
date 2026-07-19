@@ -1,6 +1,6 @@
-import {describe, expect, it} from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import {sanitizeCommentHtml} from './sanitizeComment'
+import { sanitizeCommentHtml } from './sanitizeComment'
 
 describe('sanitizeCommentHtml', () => {
   it('removes scripts, event handlers, and dangerous protocols', () => {

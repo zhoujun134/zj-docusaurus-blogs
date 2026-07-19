@@ -1,17 +1,17 @@
-import {useBlogPost} from '@docusaurus/plugin-content-blog/client'
-import {useDateTimeFormat} from '@docusaurus/theme-common/internal'
+import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
+import { useDateTimeFormat } from '@docusaurus/theme-common/internal'
 import { Icon } from '@iconify/react'
 import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink'
 
 import styles from './styles.module.css'
-import {cn} from "@site/src/utils/cnUtils";
-import React from "react";
-import Tag from "@theme/Tag";
-import {ReadingTime} from "@site/src/theme/BlogPostItem/Header/Info";
+import { cn } from '@site/src/utils/cnUtils'
+import React from 'react'
+import Tag from '@theme/Tag'
+import { ReadingTime } from '@site/src/theme/BlogPostItem/Header/Info'
 
 export default function BlogPostItemFooter(): React.JSX.Element | null {
   const { metadata, isBlogPostPage } = useBlogPost()
-  const { tags, title, editUrl, hasTruncateMarker, date, readingTime, authors } = metadata
+  const { tags, title, hasTruncateMarker, date, readingTime } = metadata
 
   const dateTimeFormat = useDateTimeFormat({
     day: 'numeric',
@@ -26,15 +26,13 @@ export default function BlogPostItemFooter(): React.JSX.Element | null {
   const truncatedPost = !isBlogPostPage && hasTruncateMarker
 
   const tagsExists = tags.length > 0
-  const authorsExists = authors.length > 0
-
   const renderFooter = isBlogPostPage
 
   if (!renderFooter) {
     return (
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <div className={styles.blogPostInfo}>
-            {/* {authorsExists && (
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        <div className={styles.blogPostInfo}>
+          {/* {authorsExists && (
             <>
               <Icon icon="ri:user-line"  />
               {authors.map(a => (
@@ -46,66 +44,77 @@ export default function BlogPostItemFooter(): React.JSX.Element | null {
               ))}
             </>
           )} */}
-            {date && (
-                <>
-                  <Icon icon="ri:calendar-line" />
-                  <time dateTime={date} itemProp="datePublished">
-                    {formatDate(date)}
-                  </time>
-                </>
-            )}
-            {tagsExists && (
-                <>
-                  <Icon icon="ri:price-tag-3-line" />
-                  <span className={styles.blogPostInfoTags}>
+          {date && (
+            <>
+              <Icon icon="ri:calendar-line" />
+              <time dateTime={date} itemProp="datePublished">
+                {formatDate(date)}
+              </time>
+            </>
+          )}
+          {tagsExists && (
+            <>
+              <Icon icon="ri:price-tag-3-line" />
+              <span className={styles.blogPostInfoTags}>
                 {tags.map(({ label, permalink: tagPermalink, description }) => (
-                    <Tag label={label} permalink={tagPermalink} description={description} key={tagPermalink} />
+                  <Tag
+                    label={label}
+                    permalink={tagPermalink}
+                    description={description}
+                    key={tagPermalink}
+                  />
                 ))}
               </span>
-                </>
-            )}
-            {readingTime && (
-                <>
-                  <Icon icon="ri:time-line" />
-                  <span className={cn(styles.blogPostReadTime, 'blog__readingTime')}>
+            </>
+          )}
+          {readingTime && (
+            <>
+              <Icon icon="ri:time-line" />
+              <span className={cn(styles.blogPostReadTime, 'blog__readingTime')}>
                 <ReadingTime readingTime={readingTime} />
               </span>
-                </>
-            )}
-            {truncatedPost && (
-                <div
-                    className={cn(
-                        'flex flex-1 items-center justify-end gap-0.5 font-medium text-[var(--ifm-link-color)] opacity-0 transition-opacity duration-200 group-hover/blog:opacity-100',
-                        {
-                          'col--3': tagsExists,
-                        },
-                    )}
-                >
-                  <ReadMoreLink blogPostTitle={title} to={metadata.permalink} className="hover:no-underline" />
-                </div>
-            )}
-          </div>
+            </>
+          )}
+          {truncatedPost && (
+            <div
+              className={cn(
+                'flex flex-1 items-center justify-end gap-0.5 font-medium text-[var(--ifm-link-color)] opacity-0 transition-opacity duration-200 group-hover/blog:opacity-100',
+                {
+                  'col--3': tagsExists,
+                },
+              )}
+            >
+              <ReadMoreLink
+                blogPostTitle={title}
+                to={metadata.permalink}
+                className="hover:no-underline"
+              />
+            </div>
+          )}
         </div>
+      </div>
     )
   }
 
   return (
-      <footer className={cn('row docusaurus-mt-lg', isBlogPostPage && styles.blogPostFooterDetailsFull)}>
-        {/* {isBlogPostPage && editUrl && (
+    <footer
+      className={cn('row docusaurus-mt-lg', isBlogPostPage && styles.blogPostFooterDetailsFull)}
+    >
+      {/* {isBlogPostPage && editUrl && (
         <div className="col margin-top--sm">
           <EditThisPage editUrl={editUrl} />
         </div>
       )} */}
 
-        {truncatedPost && (
-            <div
-                className={cn('col text--right', {
-                  'col--3': tagsExists,
-                })}
-            >
-              <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
-            </div>
-        )}
-      </footer>
+      {truncatedPost && (
+        <div
+          className={cn('col text--right', {
+            'col--3': tagsExists,
+          })}
+        >
+          <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
+        </div>
+      )}
+    </footer>
   )
 }

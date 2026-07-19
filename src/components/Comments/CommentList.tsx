@@ -1,7 +1,7 @@
 import React from 'react'
 
-import {sanitizeCommentHtml} from '@site/src/features/comments/sanitizeComment'
-import type {ICommentInfo} from '@site/src/utils/interface/zjType'
+import { sanitizeCommentHtml } from '@site/src/features/comments/sanitizeComment'
+import type { ICommentInfo } from '@site/src/utils/interface/zjType'
 
 import styles from './Comments.module.css'
 
@@ -10,7 +10,7 @@ type Props = {
   onReply: (comment: ICommentInfo, parentCommentId?: string) => void
 }
 
-function Avatar({author}: {author: string}) {
+function Avatar({ author }: { author: string }) {
   return (
     <svg
       aria-label={`${author} 的头像`}
@@ -43,7 +43,7 @@ function CommentItem({
         <Avatar author={comment.author} />
         <div
           className={styles.commentItemContent}
-          dangerouslySetInnerHTML={{__html: sanitizeCommentHtml(comment.content)}}
+          dangerouslySetInnerHTML={{ __html: sanitizeCommentHtml(comment.content) }}
         />
       </div>
       <div className={styles.commentItemDown}>
@@ -59,7 +59,7 @@ function CommentItem({
       {comment.children?.length ? (
         <div className={styles.commentListContainer}>
           <ul>
-            {comment.children.map(child => (
+            {comment.children.map((child) => (
               <CommentItem
                 key={child.commentId}
                 comment={child}
@@ -74,11 +74,11 @@ function CommentItem({
   )
 }
 
-export default function CommentList({comments, onReply}: Props) {
+export default function CommentList({ comments, onReply }: Props) {
   return (
     <div className={styles.commentListContainer}>
       <ul>
-        {comments.map(comment => (
+        {comments.map((comment) => (
           <CommentItem
             key={comment.commentId}
             comment={comment}

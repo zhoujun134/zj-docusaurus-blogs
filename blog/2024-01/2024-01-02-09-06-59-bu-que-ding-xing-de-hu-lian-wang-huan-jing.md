@@ -1,11 +1,7 @@
 ---
 slug: bu-que-ding-xing-de-hu-lian-wang-huan-jing
 title: 不确定性的互联网环境
-authors:
-  name: zhoujun134
-  title: 不要等! 不管想做什么, 都要立刻动起来。
-  url: https://github.com/zhoujun134
-  image_url: https://img.zbus.top/zbus/logo.jpg
+authors: [zhoujun134]
 tags: [随笔, 杂谈]
 image: https://img.zbus.top/zbus/blog202403150754487.webp
 ---

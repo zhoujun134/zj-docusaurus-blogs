@@ -4,7 +4,7 @@
  * work well for content-centric websites.
  */
 @config "../../tailwind.config.mjs";
-@import "tailwindcss";
+@import 'tailwindcss';
 
 .bg-grid-slate-50 {
   background-image:
@@ -78,11 +78,11 @@
 
 div[class^='announcementBar_'] {
   background: repeating-linear-gradient(
-          -35deg,
-          var(--ifm-color-primary-lighter),
-          var(--ifm-color-primary-lighter) 20px,
-          var(--ifm-color-primary-lightest) 10px,
-          var(--ifm-color-primary-lightest) 40px
+    -35deg,
+    var(--ifm-color-primary-lighter),
+    var(--ifm-color-primary-lighter) 20px,
+    var(--ifm-color-primary-lightest) 10px,
+    var(--ifm-color-primary-lightest) 40px
   );
   font-weight: 700;
 }
@@ -150,9 +150,9 @@ div[class^='announcementBar_'] {
   /* Footer */
   --docsearch-footer-background: var(--ifm-background-surface-color);
   --docsearch-key-gradient: linear-gradient(
-          -26.5deg,
-          var(--ifm-color-emphasis-200) 0%,
-          var(--ifm-color-emphasis-100) 100%
+    -26.5deg,
+    var(--ifm-color-emphasis-200) 0%,
+    var(--ifm-color-emphasis-100) 100%
   );
 }
 
@@ -175,8 +175,12 @@ body {
 }
 
 body {
-  font-family: misans, system-ui, -apple-system, 'PingFang SC',
-  'Microsoft YaHei';
+  font-family:
+    misans,
+    system-ui,
+    -apple-system,
+    'PingFang SC',
+    'Microsoft YaHei';
 }
 
 .navbar__item {
@@ -228,7 +232,6 @@ article .markdown > h2 {
 article .markdown > h3 {
   font-size: 1.4em;
 }
-
 
 article .markdown > p {
   text-indent: 2em;
@@ -308,11 +311,11 @@ code {
 
 div[class^='announcementBar_'] {
   background: repeating-linear-gradient(
-          -35deg,
-          var(--ifm-color-primary-lighter),
-          var(--ifm-color-primary-lighter) 20px,
-          var(--ifm-color-primary-lightest) 10px,
-          var(--ifm-color-primary-lightest) 40px
+    -35deg,
+    var(--ifm-color-primary-lighter),
+    var(--ifm-color-primary-lighter) 20px,
+    var(--ifm-color-primary-lightest) 10px,
+    var(--ifm-color-primary-lightest) 40px
   );
   font-weight: 700;
 }
@@ -350,7 +353,6 @@ img {
   vertical-align: middle;
   justify-content: center;
 }
-
 
 .medium-zoom-overlay,
 .medium-zoom-image--opened {

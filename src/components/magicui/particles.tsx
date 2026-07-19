@@ -39,6 +39,19 @@ interface ParticlesProps {
   vx?: number
   vy?: number
 }
+
+type Circle = {
+  x: number
+  y: number
+  translateX: number
+  translateY: number
+  size: number
+  alpha: number
+  targetAlpha: number
+  dx: number
+  dy: number
+  magnetism: number
+}
 function hexToRgb(hex: string): number[] {
   hex = hex.replace('#', '')
   const hexInt = parseInt(hex, 16)
@@ -62,7 +75,7 @@ const Particles: React.FC<ParticlesProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const canvasContainerRef = useRef<HTMLDivElement>(null)
   const context = useRef<CanvasRenderingContext2D | null>(null)
-  const circles = useRef<any[]>([])
+  const circles = useRef<Circle[]>([])
   const mousePosition = MousePosition()
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
@@ -106,19 +119,6 @@ const Particles: React.FC<ParticlesProps> = ({
         mouse.current.y = y
       }
     }
-  }
-
-  type Circle = {
-    x: number
-    y: number
-    translateX: number
-    translateY: number
-    size: number
-    alpha: number
-    targetAlpha: number
-    dx: number
-    dy: number
-    magnetism: number
   }
 
   const resizeCanvas = () => {
@@ -192,7 +192,13 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   }
 
-  const remapValue = (value: number, start1: number, end1: number, start2: number, end2: number): number => {
+  const remapValue = (
+    value: number,
+    start1: number,
+    end1: number,
+    start2: number,
+    end2: number,
+  ): number => {
     const remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2
     return remapped > 0 ? remapped : 0
   }
@@ -219,8 +225,10 @@ const Particles: React.FC<ParticlesProps> = ({
       }
       circle.x += circle.dx + vx
       circle.y += circle.dy + vy
-      circle.translateX += (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) / ease
-      circle.translateY += (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) / ease
+      circle.translateX +=
+        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) / ease
+      circle.translateY +=
+        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) / ease
 
       drawCircle(circle, true)
 

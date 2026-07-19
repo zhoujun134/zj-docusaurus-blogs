@@ -24,7 +24,7 @@ const social: Social = {
   wx: 'https://img.zbus.top/wx.jpg',
   // zhihu: 'https://www.zhihu.com/people/kuizuo',
   // cloudmusic: 'https://music.163.com/#/user/home?id=1333010742',
-  email: 'mailto:zbus.top@qq.com'
+  email: 'mailto:zbus.top@qq.com',
 }
 
 const socialSet: Record<keyof Social | 'rss', SocialValue> = {

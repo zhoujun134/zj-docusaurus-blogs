@@ -1,6 +1,6 @@
 import { type ComponentProps, type ReactNode } from 'react'
 import styles from './styles.module.css'
-import {cn} from "@site/src/utils/cnUtils";
+import { cn } from '@site/src/utils/cnUtils'
 
 export interface SvgIconProps extends ComponentProps<'svg'> {
   viewBox?: string
@@ -12,7 +12,15 @@ export interface SvgIconProps extends ComponentProps<'svg'> {
 }
 
 export default function Svg(props: SvgIconProps): React.JSX.Element {
-  const { svgClass, colorAttr, children, color = 'inherit', size = 'medium', viewBox = '0 0 24 24', ...rest } = props
+  const {
+    svgClass,
+    colorAttr,
+    children,
+    color = 'inherit',
+    size = 'medium',
+    viewBox = '0 0 24 24',
+    ...rest
+  } = props
 
   return (
     <svg

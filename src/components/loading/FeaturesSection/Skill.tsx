@@ -2,7 +2,7 @@ import Translate from '@docusaurus/Translate'
 
 import { Icon } from '@iconify/react'
 import SKILLS from '@site/data/skills'
-import IconCloud from "@site/src/components/magicui/icon-cloud";
+import IconCloud from '@site/src/components/magicui/icon-cloud'
 
 export default function Skill({ className }: { className?: string }) {
   return (

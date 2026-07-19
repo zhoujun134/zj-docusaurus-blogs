@@ -19,12 +19,11 @@ export type Social = {
 interface Props {
   href: string
   title: string
-  color?: string
   icon: string | React.JSX.Element
   [key: string]: unknown
 }
 
-function SocialLink({ href, icon, title, color, ...prop }: Props) {
+function SocialLink({ href, icon, title, ...prop }: Props) {
   return (
     <Tooltip key={title} text={title} anchorEl="#__docusaurus" id={`tooltip-${title}`}>
       <a href={href} target="_blank" {...prop} title={title}>
@@ -40,7 +39,15 @@ export default function SocialLinks({ ...prop }) {
       {Object.entries(social)
         .filter(([_key, { href }]) => href)
         .map(([key, { href, icon, title, color }]) => {
-          return <SocialLink key={key} href={href!} title={title} icon={icon} style={{ '--color': color }} />
+          return (
+            <SocialLink
+              key={key}
+              href={href!}
+              title={title}
+              icon={icon}
+              style={{ '--color': color }}
+            />
+          )
         })}
     </div>
   )
