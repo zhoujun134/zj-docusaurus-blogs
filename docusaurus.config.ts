@@ -157,9 +157,9 @@ const config: Config = {
         repo: 'zhoujun134/zj-docusaurus-blogs',
         repoId: process.env.GISCUS_REPO_ID ?? 'R_kgDOMKBFkQ',
         commentsCategory: '站点评论',
-        commentsCategoryId: process.env.GISCUS_COMMENTS_CATEGORY_ID ?? '',
+        commentsCategoryId: process.env.GISCUS_COMMENTS_CATEGORY_ID ?? 'DIC_kwDOMKBFkc4DBhwl',
         friendCategory: '友链申请',
-        friendCategoryId: process.env.GISCUS_FRIEND_CATEGORY_ID ?? '',
+        friendCategoryId: process.env.GISCUS_FRIEND_CATEGORY_ID ?? 'DIC_kwDOMKBFkc4DBhxE',
       },
     },
     // 搜索按钮相关

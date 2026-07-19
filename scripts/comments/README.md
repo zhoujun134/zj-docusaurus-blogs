@@ -16,8 +16,8 @@
 
 ```dotenv
 GISCUS_REPO_ID=R_kgDOMKBFkQ
-GISCUS_COMMENTS_CATEGORY_ID=站点评论分类的公开节点ID
-GISCUS_FRIEND_CATEGORY_ID=友链申请分类的公开节点ID
+GISCUS_COMMENTS_CATEGORY_ID=DIC_kwDOMKBFkc4DBhwl
+GISCUS_FRIEND_CATEGORY_ID=DIC_kwDOMKBFkc4DBhxE
 ```
 
 这些 ID 是公开配置。`GITHUB_TOKEN` 是迁移写入凭证，不得写入配置文件、提交到仓库或注入浏览器端代码。
@@ -60,8 +60,8 @@ npm run comments:migrate -- --input /absolute/path/comments.json
 ```bash
 export GITHUB_TOKEN='从 GitHub 获取的细粒度令牌'
 export GISCUS_REPO_ID='R_kgDOMKBFkQ'
-export GISCUS_COMMENTS_CATEGORY_ID='站点评论分类的公开节点ID'
-export GISCUS_FRIEND_CATEGORY_ID='友链申请分类的公开节点ID'
+export GISCUS_COMMENTS_CATEGORY_ID='DIC_kwDOMKBFkc4DBhwl'
+export GISCUS_FRIEND_CATEGORY_ID='DIC_kwDOMKBFkc4DBhxE'
 
 npm run comments:migrate -- \
   --input /absolute/path/comments.json \
