@@ -41,12 +41,7 @@ vi.mock('@docusaurus/useDocusaurusContext', () => ({
 }))
 
 vi.mock('@giscus/react', () => ({
-  default: (props: {
-    term: string
-    category: string
-    categoryId: string
-    theme: string
-  }) => (
+  default: (props: { term: string; category: string; categoryId: string; theme: string }) => (
     <div
       data-testid="giscus"
       data-term={props.term}
