@@ -9,6 +9,10 @@ import {VNoticeCardProps} from "@site/src/utils/interface/zjType";
 import Link from "@docusaurus/Link";
 
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {
+    CommentSwitches,
+    shouldShowComments
+} from "@site/src/features/comments/commentVisibility";
 
 type Props = WrapperProps<typeof ContentType>;
 
@@ -34,14 +38,21 @@ function copyrightVNoticeCardProps(): VNoticeCardProps {
 
 export default function ContentWrapper(props: Props): JSX.Element {
     const {pathname} = useLocation();
+    const {siteConfig} = useDocusaurusContext();
     const noticeCard: VNoticeCardProps = copyrightVNoticeCardProps();
+    const commentSwitches = (siteConfig.themeConfig.commentConfig ?? {
+        docs: false,
+        blog: false,
+    }) as CommentSwitches;
     return (
         <>
             <Content {...props} />
             {/*版本提示卡片*/}
             <NoticeCard {...noticeCard}/>
             {/*评论组件注入*/}
-            <Comments articleId={pathname}/>
+            {shouldShowComments('docs', commentSwitches) ? (
+                <Comments articleId={pathname}/>
+            ) : null}
         </>
     );
 }

@@ -16,6 +16,10 @@ import {VNoticeCardProps} from "@site/src/utils/interface/zjType";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
 import NoticeCard from "@site/src/components/NoticeCard";
+import {
+    CommentSwitches,
+    shouldShowComments
+} from "@site/src/features/comments/commentVisibility";
 
 function BlogPostPageContent({
                                  sidebar,
@@ -26,6 +30,7 @@ function BlogPostPageContent({
 }): JSX.Element {
     const {pathname} = useLocation();
     const {metadata, toc} = useBlogPost()
+    const {siteConfig} = useDocusaurusContext()
     const {nextItem, prevItem, frontMatter} = metadata
     const {
         hide_table_of_contents: hideTableOfContents,
@@ -33,6 +38,10 @@ function BlogPostPageContent({
         toc_max_heading_level: tocMaxHeadingLevel,
         hide_comment: hideComment,
     } = frontMatter
+    const commentSwitches = (siteConfig.themeConfig.commentConfig ?? {
+        docs: false,
+        blog: false,
+    }) as CommentSwitches
 
     const noticeCard: VNoticeCardProps = copyrightVNoticeCardProps();
     return (
@@ -54,7 +63,9 @@ function BlogPostPageContent({
             {/*文章版权提示*/}
             <NoticeCard {...noticeCard}/>
             {/*文章评论组件*/}
-            <Comments articleId={pathname} articleTitle={metadata.title}/>
+            {shouldShowComments('blog', commentSwitches, Boolean(hideComment)) ? (
+                <Comments articleId={pathname} articleTitle={metadata.title}/>
+            ) : null}
             <BackToTopButton/>
         </BlogLayout>
     )
