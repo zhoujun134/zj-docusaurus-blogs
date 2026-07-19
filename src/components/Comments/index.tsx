@@ -5,6 +5,7 @@ import {ICommentInfo, ICommentSubmitRequest, VNoticeCardProps} from "@site/src/u
 import {getCommentListByArticleId, submitComment} from "@site/src/utils/articleApi";
 import NoticeCard from "@site/src/components/NoticeCard";
 import BrowserOnly from "@docusaurus/BrowserOnly"; // 引入 CSS 模块
+import {sanitizeCommentHtml} from "@site/src/features/comments/sanitizeComment";
 // 引入 Docusaurus 的 DocPageContext
 
 interface CommentsProps {
@@ -14,8 +15,8 @@ interface CommentsProps {
     noticeCardBeforeSumitForm?: VNoticeCardProps,
 }
 
-const HtmlContent = ({ html }) => {
-    return <div dangerouslySetInnerHTML={{ __html: html.replace(/\n/g, '<br />') }} />;
+const HtmlContent = ({html}: {html: string}) => {
+    return <div dangerouslySetInnerHTML={{__html: sanitizeCommentHtml(html)}}/>;
 };
 
 const Comments: React.FC<CommentsProps> = (props: CommentsProps) => {
